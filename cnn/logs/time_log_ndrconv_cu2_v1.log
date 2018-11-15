@@ -1,0 +1,10 @@
+Conv layer 0 kernel time: 1.62ms
+Conv layer 1 kernel time: 1.33ms
+Conv layer 2 kernel time: 0.757ms
+FC layer 3 kernel time: 0.196ms
+FC layer 4 kernel time: 0.0319ms
+FC layer 5 kernel time: 0.0283ms
+
+Total time: 5.46ms
+
+Total kernel time: 3.96ms
