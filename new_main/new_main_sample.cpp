@@ -30,19 +30,26 @@ float* input_audio;
 float* output_audio;
 
 float test_data[INPUT_SIZE];
-
+float reordered_data[INPUT_SIZE];
 // Weight files info
 const char* nn_path = "Optimized/";
 
 // Reference results
 float reference[2] = {-2.2889187, 2.0511255};
 
+// Output dimensions
+unsigned long channels = 2;
+unsigned long width = 1;
+unsigned long heigth = 1;
+unsigned long k = 1;
+
+const SizeVector output_size = {channels, width, width, k};
+
 // Open time log file
 std::ofstream log_file("logs/time_log_v1.log");
 
 // Function prototypes
 int prepare();
-void cleanup();
 
 int main(void) {
 	//Options options(argc, argv);
@@ -56,8 +63,8 @@ int main(void) {
 	// 2. Read intermediate representation
 	printf("Reading IR \n");
 	CNNNetReader network_reader;
-	network_reader.ReadNetwork("Optimized/wakeword.xml");
-	network_reader.ReadWeights("Optimized/wakeword.bin");
+	network_reader.ReadNetwork("Optimized/wakeword_prob.xml");
+	network_reader.ReadWeights("Optimized/wakeword_prob.bin");
 	CNNNetwork network = network_reader.getNetwork();
 
 	// 3. Configure input and output
@@ -70,9 +77,15 @@ int main(void) {
 
 	DataPtr output_info = network.getOutputsInfo().begin()->second;
 	std::string output_name = network.getOutputsInfo().begin()->first;
+  std::cout << "Batch size: " <<network.getBatchSize() << std::endl;
 
 	output_info->setPrecision(Precision::FP32);
-
+  /*
+  for(int i = 0; i < 2; i++){
+    std::cout << "Dims: " << output_info->getDims()[i] << std::endl;
+  }
+    output_info->setDims(output_size);
+    */
 	// 4. Load the model
 	printf("Loading model \n");
 	auto executable_network = plugin.LoadNetwork(network, {});
@@ -92,6 +105,10 @@ int main(void) {
 	printf("Getting network info \n");
 	size_t channels_number = input->getTensorDesc().getDims()[1];
 	size_t image_size = input->getTensorDesc().getDims()[3] * input->getTensorDesc().getDims()[2];
+  std::cout << "No. channels: " << input->getTensorDesc().getDims()[1] << std::endl;
+  std::cout << "Dim 1: " << input->getTensorDesc().getDims()[2] << std::endl;
+  std::cout << "Dim 2: " << input->getTensorDesc().getDims()[3] << std::endl;
+
 
   printf("Filling buffer \n");
   /*
@@ -104,7 +121,8 @@ int main(void) {
   */
   for(int i = 0; i < INPUT_SIZE; i++)
   {
-    input_data[i] = test_data[i];
+        input_data[i] = test_data[i];
+        input_data[i] = reordered_data[i];
   }
 
 	// 7. Start inference
@@ -114,19 +132,17 @@ int main(void) {
 	// 8. Process output data
 	printf("Processing output data \n");
 	Blob::Ptr output = infer_request.GetBlob(output_name);
+
+  std::cout << "Channels: " << output->getTensorDesc().getDims()[1] << std::endl;
+  std::cout << "Dim 1: " << output->getTensorDesc().getDims()[2] << std::endl;
+  std::cout << "Dim 2: " << output->getTensorDesc().getDims()[3] << std::endl;
+
 	auto output_data = output->buffer().as<PrecisionTrait<Precision::FP32>::value_type*>();
+  printf("Neural Network output: \n");
   for(int i = 0; i < 2; i++)
   {
-    printf("Neural Network output: \n");
     std::cout << output_data[i] << std::endl;
-    printf("Reference: \n");
-    std::cout << reference[i] << std::endl;
   }
-
-
-
-	// Free the resources allocated
-	cleanup();
 }
 
 /////////// HELPER FUNCTIONS //////////
@@ -148,12 +164,16 @@ int prepare(){
       //      std::cout << test_data[i-1] << std::endl;
     }
   }
+  // Restructure the input data
+  i = 0;
+  for(int row = 0; row < 40; row++)
+  {
+    for(int line = 0; line < 90; line++)
+    {
+      reordered_data[i] = test_data[row + (40 * line)];
+      i++;
+    }
+  }
   printf("Read %d input values \n", i);
 	return(0);
-}
-
-
-// Free the resources allocated during initialization
-void cleanup() {
-  //alignedFree(output_audio);
 }
