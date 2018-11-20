@@ -13,7 +13,7 @@
 #include <limits>
 #include <iomanip>
 #include <inference_engine.hpp>
-#include "cnpy.h"
+
 #include <iomanip>
 #include <cstdlib>
 
@@ -36,14 +36,6 @@ const char* nn_path = "Optimized/";
 
 // Reference results
 float reference[2] = {-2.2889187, 2.0511255};
-
-// Output dimensions
-unsigned long channels = 2;
-unsigned long width = 1;
-unsigned long heigth = 1;
-unsigned long k = 1;
-
-const SizeVector output_size = {channels, width, width, k};
 
 // Open time log file
 std::ofstream log_file("logs/time_log_v1.log");
@@ -75,17 +67,26 @@ int main(void) {
 	input_info->setLayout(Layout::NCHW);
 	input_info->setPrecision(Precision::FP32);
 
-	DataPtr output_info = network.getOutputsInfo().begin()->second;
-	std::string output_name = network.getOutputsInfo().begin()->first;
-  std::cout << "Batch size: " <<network.getBatchSize() << std::endl;
+  OutputsDataMap outputInfo(network.getOutputsInfo());
+  std::string firstOutputName;
 
-	output_info->setPrecision(Precision::FP32);
-  /*
-  for(int i = 0; i < 2; i++){
-    std::cout << "Dims: " << output_info->getDims()[i] << std::endl;
+  for (auto & item : outputInfo)
+  {
+    if(firstOutputName.empty())
+    {
+      firstOutputName = item.first;
+    }
+    DataPtr outputData = item.second;
+    if(!outputData)
+    {
+      printf("Data output pointer is invalid \n");
+    }
+    item.second->setPrecision(Precision::FP32);
   }
-    output_info->setDims(output_size);
-    */
+  // Getting output dimensions
+  const SizeVector outputDims = outputInfo.begin()->second->getDims();
+  std::cout << "Output dims: " << outputDims[0] << " x " << outputDims[1] << std::endl;
+
 	// 4. Load the model
 	printf("Loading model \n");
 	auto executable_network = plugin.LoadNetwork(network, {});
@@ -105,24 +106,13 @@ int main(void) {
 	printf("Getting network info \n");
 	size_t channels_number = input->getTensorDesc().getDims()[1];
 	size_t image_size = input->getTensorDesc().getDims()[3] * input->getTensorDesc().getDims()[2];
-  std::cout << "No. channels: " << input->getTensorDesc().getDims()[1] << std::endl;
-  std::cout << "Dim 1: " << input->getTensorDesc().getDims()[2] << std::endl;
-  std::cout << "Dim 2: " << input->getTensorDesc().getDims()[3] << std::endl;
-
 
   printf("Filling buffer \n");
-  /*
-	for (size_t pid = 0; pid < image_size; ++pid) {
-			for (size_t ch = 0; ch < channels_number; ++ch) {
-					input_data[ch * image_size + pid] = input_audio[ch * image_size + pid];
-          std::cout << input_data[ch * image_size + pid] << std::endl;
-			}
-	}
-  */
+
   for(int i = 0; i < INPUT_SIZE; i++)
   {
         input_data[i] = test_data[i];
-        input_data[i] = reordered_data[i];
+        // input_data[i] = reordered_data[i];
   }
 
 	// 7. Start inference
@@ -131,11 +121,7 @@ int main(void) {
 
 	// 8. Process output data
 	printf("Processing output data \n");
-	Blob::Ptr output = infer_request.GetBlob(output_name);
-
-  std::cout << "Channels: " << output->getTensorDesc().getDims()[1] << std::endl;
-  std::cout << "Dim 1: " << output->getTensorDesc().getDims()[2] << std::endl;
-  std::cout << "Dim 2: " << output->getTensorDesc().getDims()[3] << std::endl;
+	Blob::Ptr output = infer_request.GetBlob(firstOutputName);
 
 	auto output_data = output->buffer().as<PrecisionTrait<Precision::FP32>::value_type*>();
   printf("Neural Network output: \n");
@@ -160,8 +146,6 @@ int prepare(){
     {
       test_data[i] = std::stof(data, &string_size);
       i++;
-      //std::cout << data << std::endl;
-      //      std::cout << test_data[i-1] << std::endl;
     }
   }
   // Restructure the input data
