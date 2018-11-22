@@ -13,16 +13,31 @@
 # limitations under the License.
 cmake_minimum_required(VERSION 2.8)
 
-set (TARGET_NAME "new_main_sample")
+
+set (TARGET_NAME "new_main_live")
 
 if( BUILD_SAMPLE_NAME AND NOT ${BUILD_SAMPLE_NAME} STREQUAL ${TARGET_NAME} )
     message(STATUS "SAMPLE ${TARGET_NAME} SKIPPED")
     return()
 endif()
 
+
+#add_subdirectory(wav_utils)
+#file (GLOB SRC
+#        ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
+#        )
+
+#file (GLOB SRC
+#	"*.cpp"
+#	"*.h"
+#	"wav_utils/*h"
+ #    )
 file (GLOB SRC
-        ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
-        )
+        "*.cpp"
+	"wav_utils/*.h"
+	"wav_utils/*.cpp"
+     )
+message(${CMAKE_CURRENT_SOURCE_DIR})
 
 list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
@@ -41,18 +56,22 @@ endif()
 # Empty name lists them directly under the .vcproj
 source_group("src" FILES ${SRC})
 
-link_directories(${LIB_FOLDER})
+link_directories(${LIB_FOLDER}) # ${CMAKE_CURRENT_SOURCE_DIR}/wav_utils/
 
+#add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/wav_utils)
 # Create library file from sources.
-add_executable(${TARGET_NAME} ${SRC})
+add_executable(${TARGET_NAME} ${SRC} wav_utils/record_voice.h wav_utils/write_wav.h)
 
-set(CMAKE_CXX_FLAGS "-lcnpy -lz -std=c++11 -g ${CMAKE_CXX_FLAGS}")
+set(CMAKE_CXX_FLAGS "-lportaudio -lasound -lrt -lm -pthread -std=c++11 -g ${CMAKE_CXX_FLAGS}")
 
 set_target_properties(${TARGET_NAME} PROPERTIES "CMAKE_CXX_FLAGS" "${CMAKE_CXX_FLAGS} -fPIE"
 COMPILE_PDB_NAME ${TARGET_NAME})
 
 target_link_libraries(${TARGET_NAME} ${InferenceEngine_LIBRARIES} ${OpenCV_LIBRARIES})
 
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/wav_utils/)
+
+target_include_directories(${TARGET_NAME} PUBLIC)
 
 if(UNIX)
     target_link_libraries(${TARGET_NAME} ${LIB_DL} pthread)
