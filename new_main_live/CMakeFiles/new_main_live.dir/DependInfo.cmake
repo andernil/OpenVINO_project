@@ -4,9 +4,9 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/annil/Desktop/project/code/new_main_live/new_main_live.cpp" "/home/annil/Desktop/project/code/new_main_live/CMakeFiles/new_main_live.dir/new_main_live.cpp.o"
-  "/home/annil/Desktop/project/code/new_main_live/wav_utils/record_voice.cpp" "/home/annil/Desktop/project/code/new_main_live/CMakeFiles/new_main_live.dir/wav_utils/record_voice.cpp.o"
-  "/home/annil/Desktop/project/code/new_main_live/wav_utils/write_wav.cpp" "/home/annil/Desktop/project/code/new_main_live/CMakeFiles/new_main_live.dir/wav_utils/write_wav.cpp.o"
+  "/home/annil/Desktop/project/OpenVINO_project/new_main_live/new_main_live.cpp" "/home/annil/Desktop/project/OpenVINO_project/new_main_live/CMakeFiles/new_main_live.dir/new_main_live.cpp.o"
+  "/home/annil/Desktop/project/OpenVINO_project/new_main_live/wav_utils/record_voice.cpp" "/home/annil/Desktop/project/OpenVINO_project/new_main_live/CMakeFiles/new_main_live.dir/wav_utils/record_voice.cpp.o"
+  "/home/annil/Desktop/project/OpenVINO_project/new_main_live/wav_utils/write_wav.cpp" "/home/annil/Desktop/project/OpenVINO_project/new_main_live/CMakeFiles/new_main_live.dir/wav_utils/write_wav.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

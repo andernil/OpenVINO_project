@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctime>
 #include "portaudio.h"
 #include "record_voice.h"
 
@@ -17,7 +18,6 @@ void record_voice(float* recorded_samples) {
   total_frames = NUM_SECONDS * SAMPLE_RATE;
   num_samples = total_frames * NUM_CHANNELS;
   num_bytes = num_samples * sizeof(float);
- 
   //recorded_samples = (float*)malloc(num_bytes); // allocate here?
   if (recorded_samples == NULL){
     printf("Could not allocate record array.\n");
@@ -63,6 +63,9 @@ void record_voice(float* recorded_samples) {
   if (err != paNoError)
     goto error;
   printf("\n------NOW RECORDING!!------\n\n"); // fflush(stdout);
+	
+  // Sleep so we can record 0.9s
+  //Pa_Sleep(0.9 * 1000);
 
   err = Pa_ReadStream(stream, recorded_samples, total_frames);
   if (err != paNoError)
@@ -71,7 +74,6 @@ void record_voice(float* recorded_samples) {
   err = Pa_CloseStream(stream);
   if (err != paNoError)
     goto error;
-
   // save to wav file
   //write_wav((float*)recorded_samples, num_bytes, NUM_CHANNELS, SAMPLE_RATE, 32);
 

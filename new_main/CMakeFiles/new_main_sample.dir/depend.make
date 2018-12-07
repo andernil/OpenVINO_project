@@ -49,8 +49,4 @@ CMakeFiles/new_main_sample.dir/new_main_sample.cpp.o: /opt/intel/computer_vision
 CMakeFiles/new_main_sample.dir/new_main_sample.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_tensor_info.hpp
 CMakeFiles/new_main_sample.dir/new_main_sample.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_version.hpp
 CMakeFiles/new_main_sample.dir/new_main_sample.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/inference_engine.hpp
-CMakeFiles/new_main_sample.dir/new_main_sample.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/mkldnn/mkldnn_extension.hpp
-CMakeFiles/new_main_sample.dir/new_main_sample.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/mkldnn/mkldnn_extension_ptr.hpp
-CMakeFiles/new_main_sample.dir/new_main_sample.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/mkldnn/mkldnn_extension_types.hpp
-CMakeFiles/new_main_sample.dir/new_main_sample.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/mkldnn/mkldnn_generic_primitive.hpp
 

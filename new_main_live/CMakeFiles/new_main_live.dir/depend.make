@@ -30,6 +30,7 @@ CMakeFiles/new_main_live.dir/new_main_live.cpp.o: /opt/intel/computer_vision_sdk
 CMakeFiles/new_main_live.dir/new_main_live.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_extension.h
 CMakeFiles/new_main_live.dir/new_main_live.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_icnn_net_reader.h
 CMakeFiles/new_main_live.dir/new_main_live.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_icnn_network.hpp
+CMakeFiles/new_main_live.dir/new_main_live.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_icnn_network_stats.hpp
 CMakeFiles/new_main_live.dir/new_main_live.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_iexecutable_network.hpp
 CMakeFiles/new_main_live.dir/new_main_live.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_iextension.h
 CMakeFiles/new_main_live.dir/new_main_live.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_ihetero_plugin.hpp
@@ -37,6 +38,7 @@ CMakeFiles/new_main_live.dir/new_main_live.cpp.o: /opt/intel/computer_vision_sdk
 CMakeFiles/new_main_live.dir/new_main_live.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_imemory_state.hpp
 CMakeFiles/new_main_live.dir/new_main_live.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_input_info.hpp
 CMakeFiles/new_main_live.dir/new_main_live.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_layers.h
+CMakeFiles/new_main_live.dir/new_main_live.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_layers_property.hpp
 CMakeFiles/new_main_live.dir/new_main_live.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_layouts.h
 CMakeFiles/new_main_live.dir/new_main_live.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_locked_memory.hpp
 CMakeFiles/new_main_live.dir/new_main_live.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_plugin.hpp
@@ -49,10 +51,6 @@ CMakeFiles/new_main_live.dir/new_main_live.cpp.o: /opt/intel/computer_vision_sdk
 CMakeFiles/new_main_live.dir/new_main_live.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_tensor_info.hpp
 CMakeFiles/new_main_live.dir/new_main_live.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_version.hpp
 CMakeFiles/new_main_live.dir/new_main_live.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/inference_engine.hpp
-CMakeFiles/new_main_live.dir/new_main_live.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/mkldnn/mkldnn_extension.hpp
-CMakeFiles/new_main_live.dir/new_main_live.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/mkldnn/mkldnn_extension_ptr.hpp
-CMakeFiles/new_main_live.dir/new_main_live.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/mkldnn/mkldnn_extension_types.hpp
-CMakeFiles/new_main_live.dir/new_main_live.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/mkldnn/mkldnn_generic_primitive.hpp
 CMakeFiles/new_main_live.dir/new_main_live.cpp.o: wav_utils/record_voice.h
 CMakeFiles/new_main_live.dir/new_main_live.cpp.o: wav_utils/write_wav.h
 

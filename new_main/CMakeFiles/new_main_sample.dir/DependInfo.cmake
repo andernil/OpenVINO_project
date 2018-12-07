@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/annil/Desktop/project/code/new_main/new_main_sample.cpp" "/home/annil/Desktop/project/code/new_main/CMakeFiles/new_main_sample.dir/new_main_sample.cpp.o"
+  "/home/annil/Desktop/project/OpenVINO_project/new_main/new_main_sample.cpp" "/home/annil/Desktop/project/OpenVINO_project/new_main/CMakeFiles/new_main_sample.dir/new_main_sample.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

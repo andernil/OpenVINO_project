@@ -46,7 +46,7 @@ link_directories(${LIB_FOLDER})
 # Create library file from sources.
 add_executable(${TARGET_NAME} ${SRC})
 
-set(CMAKE_CXX_FLAGS "-lcnpy -lz -std=c++11 -g ${CMAKE_CXX_FLAGS}")
+set(CMAKE_CXX_FLAGS "-std=c++11 -g ${CMAKE_CXX_FLAGS}")
 
 set_target_properties(${TARGET_NAME} PROPERTIES "CMAKE_CXX_FLAGS" "${CMAKE_CXX_FLAGS} -fPIE"
 COMPILE_PDB_NAME ${TARGET_NAME})

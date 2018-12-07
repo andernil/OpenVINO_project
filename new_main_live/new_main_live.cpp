@@ -1,31 +1,30 @@
-#include <sys/stat.h>
-#include <math.h>
-#include <functional>
+//#include <sys/stat.h>
+//#include <math.h>
+//#include <functional>
 #include <iostream>
-#include <memory>
+//#include <memory>
 #include <map>
 #include <fstream>
-#include <random>
+//#include <random>
 #include <string>
-#include <vector>
-#include <time.h>
-#include <chrono>
-#include <limits>
+//#include <vector>
+//#include <time.h>
+//#include <limits>
+#include <algorithm>
 #include <iomanip>
 #include <inference_engine.hpp>
 #include "record_voice.h"
 #include "write_wav.h"
-#include <iomanip>
 #include <cstdlib>
 
 using namespace InferenceEngine;
 
-#define NUM_IMAGES 	500
 #define INPUT_W     40
 #define INPUT_H     90
 #define INPUT_SIZE  INPUT_W*INPUT_H
 
-#define TMP_BUF_SIZE 6800 // should at least be the maximum buffer size needed
+// Debug parameter for extra info printing
+int DEBUG = 0;
 
 float input_audio[INPUT_SIZE];
 float* output_audio;
@@ -48,14 +47,32 @@ std::ofstream log_file("logs/time_log_v1.log");
 int prepare();
 void record_input();
 
-int main(void) {
+int main(int argc, char *argv[]) {
 	//Options options(argc, argv);
 	system("pwd");
+	
+	if(argc < 3){
+	  std::cerr << "Incorrect amount of arguments, use : [NUM ITERATIONS] [CPU or FPGA] [RELEASE or DEBUG]" << std::endl;
+	  return 1;
+	}
+  std::string device;
+	if(std::string(argv[2]) == "FPGA")
+          device = "HETERO:FPGA,CPU";
+	else
+	  device = "CPU";
+	if(std::string(argv[3]) == "DEBUG")
+		DEBUG = 1;
+	const int NUM_LOOPS = std::stoi(argv[1]);
+	// Timestamps
+	long long execution_time_buffer[NUM_LOOPS];
+	// Processing time average
+	long long processing_avg = 0;
 
 	// 1. Load plugin
 	printf("Loading plugin \n");
-	PluginDispatcher dispatcher({"/opt/intel/computer_vision_sdk/inference_engine/lib/centos_7.4/intel64", ""});
-	InferencePlugin plugin(dispatcher.getSuitablePlugin(TargetDevice::eCPU));
+	InferencePlugin plugin = PluginDispatcher({"../../../lib/intel64", ""}).getPluginByDevice(device);
+	
+
 
 	// 2. Read intermediate representation
 	printf("Reading IR \n");
@@ -101,13 +118,13 @@ int main(void) {
 	printf("Creating infer request \n");
 	auto infer_request = executable_network.CreateInferRequest();
 
-  for(int num_loops = 0; num_loops < 5; num_loops++)
-  {
+//  for(int loop = 0; loop < NUM_LOOPS; loop++)
+//  {
 	// 6. Prepare input
 	// Prepare data
 	printf("Preparing data \n");
-  //prepare(); // returns nothing, fills test_data[]
-  record_input();
+  	//prepare(); // returns nothing, fills test_data[]
+  	record_input();
 
 	printf("Assigning input data \n");
 	Blob::Ptr input = infer_request.GetBlob(input_name);
@@ -126,23 +143,59 @@ int main(void) {
 
     // Live data
     input_data[i] = input_audio[i];
-  }
-
+  }	
+for(int loop = 0; loop < NUM_LOOPS; loop++){
 	// 7. Start inference
 	printf("Starting inference \n");
 	infer_request.Infer();
-
 	// 8. Process output data
 	printf("Processing output data \n");
 	Blob::Ptr output = infer_request.GetBlob(firstOutputName);
-
+	
 	auto output_data = output->buffer().as<PrecisionTrait<Precision::FP32>::value_type*>();
   printf("Neural Network output: \n");
   for(int i = 0; i < 2; i++)
   {
     std::cout << output_data[i] << std::endl;
   }
+	// Get performance statistics for each layer
+	auto Info = infer_request.GetPerformanceCounts();
+	std::map<std::string, InferenceEngineProfileInfo>::iterator it = Info.begin();
+	long long exec_time = 0;
+	while(it != Info.end())
+	{	
+		InferenceEngineProfileInfo layer_info= it->second;
+ 		exec_time += layer_info.realTime_uSec;
+		if(DEBUG)
+		{
+			std::cout << "Performance stats for: " << it->first << std::endl;
+
+			std::string status = layer_info.status == 0 ? "Not run":
+					     layer_info.status == 1 ? "Optimized out":
+				      	    			      "Executed";
+			std::cout << "Layer status: " << status << std::endl;
+			if(status != "Not run"){
+			  std::cout << "Exec type: " << layer_info.exec_type << std::endl;
+			  std::cout << "layer type: " << layer_info.layer_type << std::endl;
+			  std::cout << "Realtime run: " << layer_info.realTime_uSec << "us" << std::endl;
+			}
+			std::cout << "----" << std::endl;
+	
+		}
+		it++;
+
+	}
+	std::cout << "Execution time from IE: " << exec_time << "us" << std::endl;
+	processing_avg += exec_time;
+	execution_time_buffer[loop] = exec_time;
+	std::cout << "---------------------------------------" << std::endl;
   }
+	// Calculate average
+	double average = processing_avg / NUM_LOOPS;
+	std::cout << "Average processing time: " << std::setprecision(4) << average/1000 << "ms" << std::endl;
+	std::sort(execution_time_buffer, execution_time_buffer + NUM_LOOPS);
+	std::cout << "Mean processing time: " << std::setprecision(4) <<  double(execution_time_buffer[int(NUM_LOOPS/2)])/1000 << "ms" << std::endl;
+	std::cout << "Average throughput: " << 1000*1000/average << " samples per second" << std::endl;
 }
 
 /////////// HELPER FUNCTIONS //////////

@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/annil/Desktop/project/code/new_main
+CMAKE_SOURCE_DIR = /home/annil/Desktop/project/OpenVINO_project/new_main
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/annil/Desktop/project/code/new_main
+CMAKE_BINARY_DIR = /home/annil/Desktop/project/OpenVINO_project/new_main
 
 # Include any dependencies generated for this target.
 include CMakeFiles/new_main_sample.dir/depend.make
@@ -54,17 +54,17 @@ include CMakeFiles/new_main_sample.dir/flags.make
 
 CMakeFiles/new_main_sample.dir/new_main_sample.cpp.o: CMakeFiles/new_main_sample.dir/flags.make
 CMakeFiles/new_main_sample.dir/new_main_sample.cpp.o: new_main_sample.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/annil/Desktop/project/code/new_main/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/annil/Desktop/project/OpenVINO_project/new_main/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/new_main_sample.dir/new_main_sample.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/new_main_sample.dir/new_main_sample.cpp.o -c /home/annil/Desktop/project/code/new_main/new_main_sample.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/new_main_sample.dir/new_main_sample.cpp.o -c /home/annil/Desktop/project/OpenVINO_project/new_main/new_main_sample.cpp
 
 CMakeFiles/new_main_sample.dir/new_main_sample.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/new_main_sample.dir/new_main_sample.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/annil/Desktop/project/code/new_main/new_main_sample.cpp > CMakeFiles/new_main_sample.dir/new_main_sample.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/annil/Desktop/project/OpenVINO_project/new_main/new_main_sample.cpp > CMakeFiles/new_main_sample.dir/new_main_sample.cpp.i
 
 CMakeFiles/new_main_sample.dir/new_main_sample.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/new_main_sample.dir/new_main_sample.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/annil/Desktop/project/code/new_main/new_main_sample.cpp -o CMakeFiles/new_main_sample.dir/new_main_sample.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/annil/Desktop/project/OpenVINO_project/new_main/new_main_sample.cpp -o CMakeFiles/new_main_sample.dir/new_main_sample.cpp.s
 
 CMakeFiles/new_main_sample.dir/new_main_sample.cpp.o.requires:
 .PHONY : CMakeFiles/new_main_sample.dir/new_main_sample.cpp.o.requires
@@ -101,6 +101,6 @@ CMakeFiles/new_main_sample.dir/clean:
 .PHONY : CMakeFiles/new_main_sample.dir/clean
 
 CMakeFiles/new_main_sample.dir/depend:
-	cd /home/annil/Desktop/project/code/new_main && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/annil/Desktop/project/code/new_main /home/annil/Desktop/project/code/new_main /home/annil/Desktop/project/code/new_main /home/annil/Desktop/project/code/new_main /home/annil/Desktop/project/code/new_main/CMakeFiles/new_main_sample.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/annil/Desktop/project/OpenVINO_project/new_main && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/annil/Desktop/project/OpenVINO_project/new_main /home/annil/Desktop/project/OpenVINO_project/new_main /home/annil/Desktop/project/OpenVINO_project/new_main /home/annil/Desktop/project/OpenVINO_project/new_main /home/annil/Desktop/project/OpenVINO_project/new_main/CMakeFiles/new_main_sample.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/new_main_sample.dir/depend
 

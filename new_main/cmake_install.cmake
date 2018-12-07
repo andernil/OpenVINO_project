@@ -1,4 +1,4 @@
-# Install script for directory: /home/annil/Desktop/project/code/new_main
+# Install script for directory: /home/annil/Desktop/project/OpenVINO_project/new_main
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -12,7 +12,7 @@ IF(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     STRING(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   ELSE(BUILD_TYPE)
-    SET(CMAKE_INSTALL_CONFIG_NAME "Release")
+    SET(CMAKE_INSTALL_CONFIG_NAME "")
   ENDIF(BUILD_TYPE)
   MESSAGE(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 ENDIF(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
@@ -32,13 +32,18 @@ IF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
   SET(CMAKE_INSTALL_SO_NO_EXE "0")
 ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
+IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for each subdirectory.
+
+ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
+
 IF(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest_${CMAKE_INSTALL_COMPONENT}.txt")
 ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "/home/annil/Desktop/project/code/new_main/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "/home/annil/Desktop/project/OpenVINO_project/new_main/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "/home/annil/Desktop/project/code/new_main/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "/home/annil/Desktop/project/OpenVINO_project/new_main/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)

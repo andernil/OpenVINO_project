@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/annil/Desktop/project/code/new_main_live
+CMAKE_SOURCE_DIR = /home/annil/Desktop/project/OpenVINO_project/new_main_live
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/annil/Desktop/project/code/new_main_live
+CMAKE_BINARY_DIR = /home/annil/Desktop/project/OpenVINO_project/new_main_live
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -72,9 +72,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/annil/Desktop/project/code/new_main_live/CMakeFiles /home/annil/Desktop/project/code/new_main_live/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/annil/Desktop/project/OpenVINO_project/new_main_live/CMakeFiles /home/annil/Desktop/project/OpenVINO_project/new_main_live/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/annil/Desktop/project/code/new_main_live/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/annil/Desktop/project/OpenVINO_project/new_main_live/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -113,6 +113,19 @@ new_main_live: cmake_check_build_system
 new_main_live/fast:
 	$(MAKE) -f CMakeFiles/new_main_live.dir/build.make CMakeFiles/new_main_live.dir/build
 .PHONY : new_main_live/fast
+
+#=============================================================================
+# Target rules for targets named ie_cpu_extension
+
+# Build rule for target.
+ie_cpu_extension: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ie_cpu_extension
+.PHONY : ie_cpu_extension
+
+# fast build rule for target.
+ie_cpu_extension/fast:
+	$(MAKE) -f ie_cpu_extension/CMakeFiles/ie_cpu_extension.dir/build.make ie_cpu_extension/CMakeFiles/ie_cpu_extension.dir/build
+.PHONY : ie_cpu_extension/fast
 
 new_main_live.o: new_main_live.cpp.o
 .PHONY : new_main_live.o
@@ -195,6 +208,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... new_main_live"
 	@echo "... rebuild_cache"
+	@echo "... ie_cpu_extension"
 	@echo "... new_main_live.o"
 	@echo "... new_main_live.i"
 	@echo "... new_main_live.s"

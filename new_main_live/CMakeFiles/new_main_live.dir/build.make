@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/annil/Desktop/project/code/new_main_live
+CMAKE_SOURCE_DIR = /home/annil/Desktop/project/OpenVINO_project/new_main_live
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/annil/Desktop/project/code/new_main_live
+CMAKE_BINARY_DIR = /home/annil/Desktop/project/OpenVINO_project/new_main_live
 
 # Include any dependencies generated for this target.
 include CMakeFiles/new_main_live.dir/depend.make
@@ -54,17 +54,17 @@ include CMakeFiles/new_main_live.dir/flags.make
 
 CMakeFiles/new_main_live.dir/new_main_live.cpp.o: CMakeFiles/new_main_live.dir/flags.make
 CMakeFiles/new_main_live.dir/new_main_live.cpp.o: new_main_live.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/annil/Desktop/project/code/new_main_live/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/annil/Desktop/project/OpenVINO_project/new_main_live/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/new_main_live.dir/new_main_live.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/new_main_live.dir/new_main_live.cpp.o -c /home/annil/Desktop/project/code/new_main_live/new_main_live.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/new_main_live.dir/new_main_live.cpp.o -c /home/annil/Desktop/project/OpenVINO_project/new_main_live/new_main_live.cpp
 
 CMakeFiles/new_main_live.dir/new_main_live.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/new_main_live.dir/new_main_live.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/annil/Desktop/project/code/new_main_live/new_main_live.cpp > CMakeFiles/new_main_live.dir/new_main_live.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/annil/Desktop/project/OpenVINO_project/new_main_live/new_main_live.cpp > CMakeFiles/new_main_live.dir/new_main_live.cpp.i
 
 CMakeFiles/new_main_live.dir/new_main_live.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/new_main_live.dir/new_main_live.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/annil/Desktop/project/code/new_main_live/new_main_live.cpp -o CMakeFiles/new_main_live.dir/new_main_live.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/annil/Desktop/project/OpenVINO_project/new_main_live/new_main_live.cpp -o CMakeFiles/new_main_live.dir/new_main_live.cpp.s
 
 CMakeFiles/new_main_live.dir/new_main_live.cpp.o.requires:
 .PHONY : CMakeFiles/new_main_live.dir/new_main_live.cpp.o.requires
@@ -77,17 +77,17 @@ CMakeFiles/new_main_live.dir/new_main_live.cpp.o.provides.build: CMakeFiles/new_
 
 CMakeFiles/new_main_live.dir/wav_utils/record_voice.cpp.o: CMakeFiles/new_main_live.dir/flags.make
 CMakeFiles/new_main_live.dir/wav_utils/record_voice.cpp.o: wav_utils/record_voice.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/annil/Desktop/project/code/new_main_live/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/annil/Desktop/project/OpenVINO_project/new_main_live/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/new_main_live.dir/wav_utils/record_voice.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/new_main_live.dir/wav_utils/record_voice.cpp.o -c /home/annil/Desktop/project/code/new_main_live/wav_utils/record_voice.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/new_main_live.dir/wav_utils/record_voice.cpp.o -c /home/annil/Desktop/project/OpenVINO_project/new_main_live/wav_utils/record_voice.cpp
 
 CMakeFiles/new_main_live.dir/wav_utils/record_voice.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/new_main_live.dir/wav_utils/record_voice.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/annil/Desktop/project/code/new_main_live/wav_utils/record_voice.cpp > CMakeFiles/new_main_live.dir/wav_utils/record_voice.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/annil/Desktop/project/OpenVINO_project/new_main_live/wav_utils/record_voice.cpp > CMakeFiles/new_main_live.dir/wav_utils/record_voice.cpp.i
 
 CMakeFiles/new_main_live.dir/wav_utils/record_voice.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/new_main_live.dir/wav_utils/record_voice.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/annil/Desktop/project/code/new_main_live/wav_utils/record_voice.cpp -o CMakeFiles/new_main_live.dir/wav_utils/record_voice.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/annil/Desktop/project/OpenVINO_project/new_main_live/wav_utils/record_voice.cpp -o CMakeFiles/new_main_live.dir/wav_utils/record_voice.cpp.s
 
 CMakeFiles/new_main_live.dir/wav_utils/record_voice.cpp.o.requires:
 .PHONY : CMakeFiles/new_main_live.dir/wav_utils/record_voice.cpp.o.requires
@@ -100,17 +100,17 @@ CMakeFiles/new_main_live.dir/wav_utils/record_voice.cpp.o.provides.build: CMakeF
 
 CMakeFiles/new_main_live.dir/wav_utils/write_wav.cpp.o: CMakeFiles/new_main_live.dir/flags.make
 CMakeFiles/new_main_live.dir/wav_utils/write_wav.cpp.o: wav_utils/write_wav.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/annil/Desktop/project/code/new_main_live/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/annil/Desktop/project/OpenVINO_project/new_main_live/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/new_main_live.dir/wav_utils/write_wav.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/new_main_live.dir/wav_utils/write_wav.cpp.o -c /home/annil/Desktop/project/code/new_main_live/wav_utils/write_wav.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/new_main_live.dir/wav_utils/write_wav.cpp.o -c /home/annil/Desktop/project/OpenVINO_project/new_main_live/wav_utils/write_wav.cpp
 
 CMakeFiles/new_main_live.dir/wav_utils/write_wav.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/new_main_live.dir/wav_utils/write_wav.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/annil/Desktop/project/code/new_main_live/wav_utils/write_wav.cpp > CMakeFiles/new_main_live.dir/wav_utils/write_wav.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/annil/Desktop/project/OpenVINO_project/new_main_live/wav_utils/write_wav.cpp > CMakeFiles/new_main_live.dir/wav_utils/write_wav.cpp.i
 
 CMakeFiles/new_main_live.dir/wav_utils/write_wav.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/new_main_live.dir/wav_utils/write_wav.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/annil/Desktop/project/code/new_main_live/wav_utils/write_wav.cpp -o CMakeFiles/new_main_live.dir/wav_utils/write_wav.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/annil/Desktop/project/OpenVINO_project/new_main_live/wav_utils/write_wav.cpp -o CMakeFiles/new_main_live.dir/wav_utils/write_wav.cpp.s
 
 CMakeFiles/new_main_live.dir/wav_utils/write_wav.cpp.o.requires:
 .PHONY : CMakeFiles/new_main_live.dir/wav_utils/write_wav.cpp.o.requires
@@ -153,6 +153,6 @@ CMakeFiles/new_main_live.dir/clean:
 .PHONY : CMakeFiles/new_main_live.dir/clean
 
 CMakeFiles/new_main_live.dir/depend:
-	cd /home/annil/Desktop/project/code/new_main_live && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/annil/Desktop/project/code/new_main_live /home/annil/Desktop/project/code/new_main_live /home/annil/Desktop/project/code/new_main_live /home/annil/Desktop/project/code/new_main_live /home/annil/Desktop/project/code/new_main_live/CMakeFiles/new_main_live.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/annil/Desktop/project/OpenVINO_project/new_main_live && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/annil/Desktop/project/OpenVINO_project/new_main_live /home/annil/Desktop/project/OpenVINO_project/new_main_live /home/annil/Desktop/project/OpenVINO_project/new_main_live /home/annil/Desktop/project/OpenVINO_project/new_main_live /home/annil/Desktop/project/OpenVINO_project/new_main_live/CMakeFiles/new_main_live.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/new_main_live.dir/depend
 
