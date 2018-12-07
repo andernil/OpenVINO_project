@@ -1,1 +1,0 @@
-/usr/bin/c++   -std=c++11 -g     CMakeFiles/new_main_sample.dir/new_main_sample.cpp.o  -o new_main_sample -rdynamic /opt/intel/computer_vision_sdk/inference_engine/lib/centos_7.4/intel64/libinference_engine.so -lpthread -ldl -Wl,-rpath,/opt/intel/computer_vision_sdk/inference_engine/lib/centos_7.4/intel64 

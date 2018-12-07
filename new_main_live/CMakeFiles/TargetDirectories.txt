@@ -1,2 +1,0 @@
-/home/annil/Desktop/project/OpenVINO_project/new_main_live/ie_cpu_extension/CMakeFiles/ie_cpu_extension.dir
-/home/annil/Desktop/project/OpenVINO_project/new_main_live/CMakeFiles/new_main_live.dir

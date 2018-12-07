@@ -1,0 +1,55 @@
+#! /bin/bash
+# This script compiles the Linux PCIe driver, load the driver, and setups the 
+# necessary files to allow automatically load the driver upon reboot. 
+# You need sudo access to load the driver.
+
+BSP_NAME=`aocl board-name`
+MODULE_NAME=aclpci_$BSP_NAME\_drv
+
+if [[ "$MODULE_NAME" == "aclpci__drv" ]]
+then
+  echo Failed to determine BSP name
+  exit 1
+fi
+
+MODULE_DEST=/lib/modules/`uname -r`/misc
+MODPROBE_FILE_DIR=/etc/sysconfig/modules
+RULE_FILE_DIR=/etc/udev/rules.d
+
+# Copy the Linux PCIe driver source code to a temporary folder
+TEMP_FOLDER=`mktemp -d /tmp/opencl_driver_XXXXXX`
+cp -r "`aocl board-path`"/linux64/driver/* $TEMP_FOLDER
+
+# Compile the Linux PCIe driver against your own kernel sources, 
+cd $TEMP_FOLDER && sh ./make_all.sh $BSP_NAME || exit 1
+
+# Copy the kernel module into destination directory and run '/sbin/depmod' 
+# so that '/sbin/modprobe' can find it 
+sudo mkdir -p $MODULE_DEST
+sudo cp ./$MODULE_NAME.ko $MODULE_DEST
+sudo /sbin/depmod -a
+
+# Create .modules file which is executed when reboot to load the driver
+cat > $TEMP_FOLDER/aclpci_$BSP_NAME.modules <<EOL
+#!/bin/sh
+exec /sbin/modprobe $MODULE_NAME >/dev/null 2>&1
+EOL
+sudo mkdir -p $MODPROBE_FILE_DIR
+sudo cp $TEMP_FOLDER/aclpci_$BSP_NAME.modules $MODPROBE_FILE_DIR
+sudo chmod +x $MODPROBE_FILE_DIR/aclpci_$BSP_NAME.modules
+
+# Write udev rules to change the access permission for the device nodes 
+cat > $TEMP_FOLDER/99-aclpci_$BSP_NAME.rules <<EOL
+KERNEL=="acl$BSP_NAME*", SUBSYSTEM=="aclpci_$BSP_NAME", MODE=="0600", MODE="0666"
+EOL
+sudo mkdir -p $RULE_FILE_DIR
+sudo cp $TEMP_FOLDER/99-aclpci_$BSP_NAME.rules $RULE_FILE_DIR
+
+# Load/reload the driver into kernel after all the setup
+if [[ "`cat /proc/modules | grep "$MODULE_NAME"`" ]]; then
+   sudo /sbin/modprobe -r $MODULE_NAME
+fi
+sudo /sbin/modprobe $MODULE_NAME
+
+# Remove the temporary folder
+rm -rf $TEMP_FOLDER
