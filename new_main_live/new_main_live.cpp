@@ -187,9 +187,8 @@ int main(int argc, char *argv[]) {
 		for(int i = 0; i < outputDims[0] * outputDims[1]; i++)
 		{
 		  std::cout << output_data[i] << std::endl;
-		}
-		if(DEBUG)	
-			std::cout << "Execution time from IE: " << exec_time << "us" << std::endl;
+		}	
+	  std::cout << "Execution time from IE: " << exec_time << "us" << std::endl;
 		std::cout << "---------------------------------------" << std::endl;
 
 		// Add to running average and buffer
@@ -204,6 +203,7 @@ int main(int argc, char *argv[]) {
 	// Print time and throughput calculations
 	std::cout << "Average processing time: " << std::setprecision(4) << average/1000 << "ms" << std::endl;
 	std::cout << "Mean processing time: " << std::setprecision(4) <<  double(execution_time_buffer[int(NUM_LOOPS/2)])/1000 << "ms" << std::endl;
+	std::cout << "Fastest iteration: " << std::setprecision(4) << double(execution_time_buffer[0])/1000 << "ms" << std::endl;
 	std::cout << "Average throughput: " << 1000*1000/average << " samples per second" << std::endl;
 }
 
