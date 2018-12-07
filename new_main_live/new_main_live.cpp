@@ -1,15 +1,7 @@
-//#include <sys/stat.h>
-//#include <math.h>
-//#include <functional>
 #include <iostream>
-//#include <memory>
 #include <map>
 #include <fstream>
-//#include <random>
 #include <string>
-//#include <vector>
-//#include <time.h>
-//#include <limits>
 #include <algorithm>
 #include <iomanip>
 #include <inference_engine.hpp>
@@ -23,72 +15,64 @@ using namespace InferenceEngine;
 #define INPUT_H     90
 #define INPUT_SIZE  INPUT_W*INPUT_H
 
-// Debug parameter for extra info printing
-int DEBUG = 0;
-
+// Global buffer array for the input audio
 float input_audio[INPUT_SIZE];
-float* output_audio;
 
-float test_data[INPUT_SIZE];
-float reordered_data[INPUT_SIZE];
-// Weight files info
-const char* nn_path = "Optimized/";
-
-// Reference results
-float reference[2] = {-2.2889187, 2.0511255};
-
-// Load the recorded input audio file
-const char* input_file_name = "recordings/voice_rec_live_processed";
-
-// Open time log file
-std::ofstream log_file("logs/time_log_v1.log");
+// Path of the recorded input audio file and sample
+const char* input_processed_recording_name = "recordings/voice_rec_live_processed";
+const char* input_processed_sample_name = "recordings/data.csv";
 
 // Function prototypes
-int prepare();
-void record_input();
+void load_sample(float* input_buffer);
+void record_input(float* input_buffer);
 
 int main(int argc, char *argv[]) {
-	//Options options(argc, argv);
-	system("pwd");
-	
-	if(argc < 3){
-	  std::cerr << "Incorrect amount of arguments, use : [NUM ITERATIONS] [CPU or FPGA] [RELEASE or DEBUG]" << std::endl;
+	// Input argument variables
+  std::string DEVICE = "CPU";
+	int DEBUG = 0;
+	int USE_SAMPLE = 0;
+	if(argc != 7){
+	  std::cerr << "Incorrect amount of arguments, use : [NETWORK_PATH XML] [WEIGHTS_PATH BIN] [NUM ITERATIONS] [SAMPLE or LIVE] [CPU or FPGA] [RELEASE or DEBUG]" << std::endl;
 	  return 1;
 	}
-  std::string device;
-	if(std::string(argv[2]) == "FPGA")
-          device = "HETERO:FPGA,CPU";
-	else
-	  device = "CPU";
-	if(std::string(argv[3]) == "DEBUG")
+	std::string NETWORK = std::string(argv[1]);
+	std::string WEIGHTS = std::string(argv[2]);
+	const int NUM_LOOPS = std::stoi(argv[3]);
+	if(std::string(argv[4]) == "SAMPLE")
+		USE_SAMPLE = 1;	
+	if(std::string(argv[5]) == "FPGA")
+		DEVICE = "HETERO:FPGA,CPU";
+	if(std::string(argv[6]) == "DEBUG")
 		DEBUG = 1;
-	const int NUM_LOOPS = std::stoi(argv[1]);
+
 	// Timestamps
 	long long execution_time_buffer[NUM_LOOPS];
 	// Processing time average
 	long long processing_avg = 0;
 
 	// 1. Load plugin
-	printf("Loading plugin \n");
-	InferencePlugin plugin = PluginDispatcher({"../../../lib/intel64", ""}).getPluginByDevice(device);
-	
-
+	if(DEBUG)	
+		std::cout << "Loading Plugin" << std::endl;
+	InferencePlugin plugin = PluginDispatcher({"../../../lib/intel64", ""}).getPluginByDevice(DEVICE);
 
 	// 2. Read intermediate representation
-	printf("Reading IR \n");
+	if(DEBUG)	
+		std::cout << "Reading intermediate representation" << std::endl;
 	CNNNetReader network_reader;
-	network_reader.ReadNetwork("Optimized/wakeword_prob.xml");
-	network_reader.ReadWeights("Optimized/wakeword_prob.bin");
+	network_reader.ReadNetwork(NETWORK);
+	network_reader.ReadWeights(WEIGHTS);
 	CNNNetwork network = network_reader.getNetwork();
 
 	// 3. Configure input and output
-	printf("Configuring input and output \n");
+	if(DEBUG)	
+		std::cout << "Configuring input and output" << std::endl;
 	InputInfo::Ptr input_info = network.getInputsInfo().begin()->second;
 	std::string input_name = network.getInputsInfo().begin()->first;
 
 	input_info->setLayout(Layout::NCHW);
 	input_info->setPrecision(Precision::FP32);
-
+	
+	// Get output info and set output precision
   OutputsDataMap outputInfo(network.getOutputsInfo());
   std::string firstOutputName;
 
@@ -101,107 +85,139 @@ int main(int argc, char *argv[]) {
     DataPtr outputData = item.second;
     if(!outputData)
     {
-      printf("Data output pointer is invalid \n");
+      std::cout << "Data output pointer is invalid" << std::endl;
     }
     item.second->setPrecision(Precision::FP32);
   }
   // Getting output dimensions
   const SizeVector outputDims = outputInfo.begin()->second->getDims();
-  std::cout << "Output dims: " << outputDims[0] << " x " << outputDims[1] << std::endl;
+	if(DEBUG)	
+		std::cout << "Output dims: " << outputDims[0] << "x" << outputDims[1] << std::endl;
 
 	// 4. Load the model
-	printf("Loading model \n");
+	if(DEBUG)	
+		std::cout << "Loading model" << std::endl;
 	auto executable_network = plugin.LoadNetwork(network, {});
 
 
 	// 5. Create infer request
-	printf("Creating infer request \n");
+	if(DEBUG)	
+		std::cout << "Creating infer request" << std::endl;
 	auto infer_request = executable_network.CreateInferRequest();
 
-//  for(int loop = 0; loop < NUM_LOOPS; loop++)
-//  {
 	// 6. Prepare input
-	// Prepare data
-	printf("Preparing data \n");
-  	//prepare(); // returns nothing, fills test_data[]
-  	record_input();
-
-	printf("Assigning input data \n");
+	if(DEBUG)	
+		std::cout << "Assigning input data" << std::endl;
 	Blob::Ptr input = infer_request.GetBlob(input_name);
 	auto input_data = input->buffer().as<PrecisionTrait<Precision::FP32>::value_type *>();
-	printf("Getting network info \n");
-	size_t channels_number = input->getTensorDesc().getDims()[1];
-	size_t image_size = input->getTensorDesc().getDims()[3] * input->getTensorDesc().getDims()[2];
 
-  printf("Filling buffer \n");
-
-  for(int i = 0; i < INPUT_SIZE; i++)
-  {
-    // Input data for testing
-    //input_data[i] = test_data[i];
-    // input_data[i] = reordered_data[i];
-
-    // Live data
-    input_data[i] = input_audio[i];
-  }	
-for(int loop = 0; loop < NUM_LOOPS; loop++){
-	// 7. Start inference
-	printf("Starting inference \n");
-	infer_request.Infer();
-	// 8. Process output data
-	printf("Processing output data \n");
-	Blob::Ptr output = infer_request.GetBlob(firstOutputName);
-	
-	auto output_data = output->buffer().as<PrecisionTrait<Precision::FP32>::value_type*>();
-  printf("Neural Network output: \n");
-  for(int i = 0; i < 2; i++)
-  {
-    std::cout << output_data[i] << std::endl;
+	if(DEBUG){
+		std::cout << "Getting network info" << std::endl;
+		size_t num_channels = input->getTensorDesc().getDims()[1];
+		size_t width = input->getTensorDesc().getDims()[3];
+		size_t height = input->getTensorDesc().getDims()[2];	
+		std::cout << "Num. input channels: " << num_channels << std::endl;
+		std::cout << "Input dimensions: " << width << "x" << height << std::endl;
   }
-	// Get performance statistics for each layer
-	auto Info = infer_request.GetPerformanceCounts();
-	std::map<std::string, InferenceEngineProfileInfo>::iterator it = Info.begin();
-	long long exec_time = 0;
-	while(it != Info.end())
-	{	
-		InferenceEngineProfileInfo layer_info= it->second;
- 		exec_time += layer_info.realTime_uSec;
-		if(DEBUG)
-		{
-			std::cout << "Performance stats for: " << it->first << std::endl;
 
-			std::string status = layer_info.status == 0 ? "Not run":
-					     layer_info.status == 1 ? "Optimized out":
-				      	    			      "Executed";
-			std::cout << "Layer status: " << status << std::endl;
-			if(status != "Not run"){
-			  std::cout << "Exec type: " << layer_info.exec_type << std::endl;
-			  std::cout << "layer type: " << layer_info.layer_type << std::endl;
-			  std::cout << "Realtime run: " << layer_info.realTime_uSec << "us" << std::endl;
-			}
-			std::cout << "----" << std::endl;
-	
+	// Loop for either inference speed testing or speech recognition testing
+  for(int loop = 0; loop < NUM_LOOPS; loop++)
+  {
+	  if(DEBUG)	
+		  std::cout << "Preparing data" << std::endl;
+		if(USE_SAMPLE){
+			std::cout << "Using sampled data" << std::endl;
+	 	  load_sample(&input_audio[0]);
 		}
-		it++;
+		else
+  		record_input(&input_audio[0]);
 
-	}
-	std::cout << "Execution time from IE: " << exec_time << "us" << std::endl;
-	processing_avg += exec_time;
-	execution_time_buffer[loop] = exec_time;
-	std::cout << "---------------------------------------" << std::endl;
+		std::cout << "Filling input buffer" << std::endl;
+  	for(int i = 0; i < INPUT_SIZE; i++)
+  	{
+ 	    input_data[i] = input_audio[i];
+  	}	
+
+		// 7. Start synchronous inference
+		if(DEBUG)	
+			std::cout << "Starting synchronous inference" << std::endl;
+		infer_request.Infer();
+
+		// 8. Process output data
+		if(DEBUG)	
+			std::cout << "Retrieving output data" << std::endl;
+		Blob::Ptr output = infer_request.GetBlob(firstOutputName);
+
+		// Get performance statistics for each layer
+		if(DEBUG)
+			std::cout << "Getting performance statistics for each layer" << std::endl;
+		auto Info = infer_request.GetPerformanceCounts();
+		std::map<std::string, InferenceEngineProfileInfo>::iterator it = Info.begin();
+		if(DEBUG)
+			std::cout << "----PERFORMANCE STATISTICS----" << std::endl;
+		long long exec_time = 0;
+
+		while(it != Info.end())
+		{	
+			InferenceEngineProfileInfo layer_info= it->second;
+	 		exec_time += layer_info.realTime_uSec;
+			if(DEBUG)
+			{
+				std::cout << "Performance stats for: " << it->first << std::endl;
+
+				std::string status = layer_info.status == 0 ? "Not run":
+							   						 layer_info.status == 1 ? "Optimized out":
+						    	    			 								     			"Executed";
+
+				std::cout << "Layer status: " << status << std::endl;
+				if(status != "Not run"){
+					std::cout << "Exec type: " << layer_info.exec_type << std::endl;
+					std::cout << "layer type: " << layer_info.layer_type << std::endl;
+					std::cout << "Realtime run: " << layer_info.realTime_uSec << "us" << std::endl;
+				}
+				std::cout << "----" << std::endl;
+			}
+			it++;
+		}
+		std::cout << "Results:" << std::endl;
+
+		// Print output data and execution time
+		auto output_data = output->buffer().as<PrecisionTrait<Precision::FP32>::value_type*>();
+		std::cout << "Neural Network output" << std::endl;
+		for(int i = 0; i < outputDims[0] * outputDims[1]; i++)
+		{
+		  std::cout << output_data[i] << std::endl;
+		}
+		if(DEBUG)	
+			std::cout << "Execution time from IE: " << exec_time << "us" << std::endl;
+		std::cout << "---------------------------------------" << std::endl;
+
+		// Add to running average and buffer
+		processing_avg += exec_time;
+		execution_time_buffer[loop] = exec_time;
   }
-	// Calculate average
+
+	// Calculate average and sort buffer
 	double average = processing_avg / NUM_LOOPS;
-	std::cout << "Average processing time: " << std::setprecision(4) << average/1000 << "ms" << std::endl;
 	std::sort(execution_time_buffer, execution_time_buffer + NUM_LOOPS);
+	
+	// Print time and throughput calculations
+	std::cout << "Average processing time: " << std::setprecision(4) << average/1000 << "ms" << std::endl;
 	std::cout << "Mean processing time: " << std::setprecision(4) <<  double(execution_time_buffer[int(NUM_LOOPS/2)])/1000 << "ms" << std::endl;
 	std::cout << "Average throughput: " << 1000*1000/average << " samples per second" << std::endl;
 }
 
-/////////// HELPER FUNCTIONS //////////
-int prepare(){
-	printf("Loading array \n");
-  std::ifstream in("input_data/data.csv");
+/////////// HELPER FUNCTIONS //////////////////////////////
+/*	load_sample	
+*
+*		Function for loading the sample data saying "Hey Spark" 
+*	  from a .csv file to the input_audio buffer via the 
+*		input_buffer pointer
+*/
+
+void load_sample(float* input_buffer){
+	std::cout << "Loading array" << std::endl;
+  std::ifstream in(input_processed_sample_name);
   std::string line;
   int i = 0;
   while(getline(in, line))
@@ -211,36 +227,31 @@ int prepare(){
     std::string::size_type string_size;
     while(getline(ss, data, ','))
     {
-      test_data[i] = std::stof(data, &string_size);
+      input_buffer[i] = std::stof(data, &string_size);
       i++;
     }
   }
-  // Restructure the input data
-  i = 0;
-  for(int row = 0; row < 40; row++)
-  {
-    for(int line = 0; line < 90; line++)
-    {
-      reordered_data[i] = test_data[row + (40 * line)];
-      i++;
-    }
-  }
-  printf("Read %d input values \n", i);
-	return(0);
+  std::cout << "Read " << i << " input values" << std::endl;
 }
 
-void record_input()
+/*	record_input
+*
+*		Function for calling record_voice in record_voice.c and
+*		store the output data to a .wav-file using write_wav in write_wav.c
+*		Also calls and the MFCC-preprocess function and reads the data to 
+* 	input_audio via the input_buffer pointer.
+*/
+
+void record_input(float* input_buffer)
 {
-  //double samplerate = get_sample_rate();
   // Allocate memory and record voice
   std::cout << "Allocating memory for recording" << std::endl;
   int num_bytes = NUM_SECONDS * SAMPLE_RATE  * NUM_CHANNELS * sizeof(float);
   float* recorded_samples = (float*)malloc(num_bytes);
 
-
-  std::cout << "Recording sample" << std::endl;
+	// Start recording
   record_voice(recorded_samples);
-  printf("Num. bytes recorded: %d\n", num_bytes);
+  std::cout << "Recorded " << num_bytes << " of data" << std::endl;
 
   // Export .wav file
   write_wav("recordings/voice_rec_live.wav", recorded_samples, num_bytes, NUM_CHANNELS, SAMPLE_RATE, 32); //
@@ -249,10 +260,10 @@ void record_input()
   system("preprocessing/mfcc_preprocess --input recordings/voice_rec_live.wav --output recordings/voice_rec_live_processed");
 
   // Read preprocessed data
-  std::ifstream input_file(input_file_name, std::ios::in | std::ios::binary);
+  std::ifstream input_file(input_processed_recording_name, std::ios::in | std::ios::binary);
   if(input_file.is_open())
   {
-    input_file.read((char*)(input_audio), sizeof(float)*INPUT_SIZE);
+    input_file.read((char*)(input_buffer), sizeof(float)*INPUT_SIZE);
     input_file.close();
   }
   else
