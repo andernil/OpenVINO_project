@@ -8,6 +8,7 @@
 #include "record_voice.h"
 #include "write_wav.h"
 #include <cstdlib>
+#include <chrono>
 
 using namespace InferenceEngine;
 
@@ -25,6 +26,8 @@ const char* input_processed_sample_name = "recordings/data.csv";
 // Function prototypes
 void load_sample(float* input_buffer);
 void record_input(float* input_buffer);
+
+double start_time = 0;
 
 int main(int argc, char *argv[]) {
 	// Input argument variables
@@ -47,8 +50,10 @@ int main(int argc, char *argv[]) {
 
 	// Timestamps
 	long long execution_time_buffer[NUM_LOOPS];
+	double skafsaa_time[NUM_LOOPS];
 	// Processing time average
 	long long processing_avg = 0;
+	double skafsaa_avg = 0;
 
 	// 1. Load plugin
 	if(DEBUG)	
@@ -71,7 +76,7 @@ int main(int argc, char *argv[]) {
 
 	input_info->setLayout(Layout::NCHW);
 	input_info->setPrecision(Precision::FP32);
-	
+  
 	// Get output info and set output precision
   OutputsDataMap outputInfo(network.getOutputsInfo());
   std::string firstOutputName;
@@ -123,6 +128,7 @@ int main(int argc, char *argv[]) {
 	// Loop for either inference speed testing or speech recognition testing
   for(int loop = 0; loop < NUM_LOOPS; loop++)
   {
+	auto start = std::chrono::high_resolution_clock::now();
 	  if(DEBUG)	
 		  std::cout << "Preparing data" << std::endl;
 		if(USE_SAMPLE){
@@ -147,7 +153,7 @@ int main(int argc, char *argv[]) {
 		if(DEBUG)	
 			std::cout << "Retrieving output data" << std::endl;
 		Blob::Ptr output = infer_request.GetBlob(firstOutputName);
-
+		auto stop = std::chrono::high_resolution_clock::now();
 		// Get performance statistics for each layer
 		if(DEBUG)
 			std::cout << "Getting performance statistics for each layer" << std::endl;
@@ -188,23 +194,37 @@ int main(int argc, char *argv[]) {
 		{
 		  std::cout << output_data[i] << std::endl;
 		}	
-	  std::cout << "Execution time from IE: " << exec_time << "us" << std::endl;
+		std::cout << "Execution time from IE: " << exec_time << "us" << std::endl;
+		std::chrono::duration<double> elapsed = stop - start;
+		skafsaa_time[loop] = double(elapsed.count())*1000;
+		std::cout << "Execution time ala Skafsaa: " << std::setprecision(4) << skafsaa_time[loop] << "ms" << std::endl;
 		std::cout << "---------------------------------------" << std::endl;
 
 		// Add to running average and buffer
 		processing_avg += exec_time;
+		skafsaa_avg += skafsaa_time[loop];
 		execution_time_buffer[loop] = exec_time;
   }
 
 	// Calculate average and sort buffer
 	double average = processing_avg / NUM_LOOPS;
+	double skafsaa_average = skafsaa_avg / NUM_LOOPS;
 	std::sort(execution_time_buffer, execution_time_buffer + NUM_LOOPS);
-	
+	std::sort(skafsaa_time, skafsaa_time + NUM_LOOPS);
 	// Print time and throughput calculations
+	std::cout << "Inference Engine measurements" << std::endl;
 	std::cout << "Average processing time: " << std::setprecision(4) << average/1000 << "ms" << std::endl;
 	std::cout << "Mean processing time: " << std::setprecision(4) <<  double(execution_time_buffer[int(NUM_LOOPS/2)])/1000 << "ms" << std::endl;
 	std::cout << "Fastest processing time: " << std::setprecision(4) << double(execution_time_buffer[0])/1000 << "ms" << std::endl;
 	std::cout << "Average throughput: " << 1000*1000/average << " samples per second" << std::endl;
+
+	std::cout << "------------------------------" << std::endl;
+	
+	std::cout << "With MFCC:" << std::endl;
+	std::cout << "Average processing time: " << std::setprecision(4) << skafsaa_average << "ms" << std::endl;
+	std::cout << "Mean processing time: " << std::setprecision(4) <<  double(skafsaa_time[int(NUM_LOOPS/2)]) << "ms" << std::endl;
+	std::cout << "Fastest processing time: " << std::setprecision(4) << double(skafsaa_time[0]) << "ms" << std::endl;
+	std::cout << "Average throughput: " << 1000/skafsaa_average << " samples per second" << std::endl;
 }
 
 /////////// HELPER FUNCTIONS //////////////////////////////

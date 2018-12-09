@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO
+CMAKE_SOURCE_DIR = /home/annil/Desktop/project/code/Hey_Spark_OpenVINO
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO
+CMAKE_BINARY_DIR = /home/annil/Desktop/project/code/Hey_Spark_OpenVINO
 
 # Include any dependencies generated for this target.
 include CMakeFiles/voice_recognition_OpenVINO.dir/depend.make
@@ -54,17 +54,17 @@ include CMakeFiles/voice_recognition_OpenVINO.dir/flags.make
 
 CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_openVINO.cpp.o: CMakeFiles/voice_recognition_OpenVINO.dir/flags.make
 CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_openVINO.cpp.o: voice_recognition_openVINO.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/annil/Desktop/project/code/Hey_Spark_OpenVINO/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_openVINO.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_openVINO.cpp.o -c /home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/voice_recognition_openVINO.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_openVINO.cpp.o -c /home/annil/Desktop/project/code/Hey_Spark_OpenVINO/voice_recognition_openVINO.cpp
 
 CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_openVINO.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_openVINO.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/voice_recognition_openVINO.cpp > CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_openVINO.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/annil/Desktop/project/code/Hey_Spark_OpenVINO/voice_recognition_openVINO.cpp > CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_openVINO.cpp.i
 
 CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_openVINO.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_openVINO.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/voice_recognition_openVINO.cpp -o CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_openVINO.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/annil/Desktop/project/code/Hey_Spark_OpenVINO/voice_recognition_openVINO.cpp -o CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_openVINO.cpp.s
 
 CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_openVINO.cpp.o.requires:
 .PHONY : CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_openVINO.cpp.o.requires
@@ -77,17 +77,17 @@ CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_openVINO.cpp.o.provi
 
 CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/record_voice.cpp.o: CMakeFiles/voice_recognition_OpenVINO.dir/flags.make
 CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/record_voice.cpp.o: wav_utils/record_voice.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/annil/Desktop/project/code/Hey_Spark_OpenVINO/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/record_voice.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/record_voice.cpp.o -c /home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/wav_utils/record_voice.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/record_voice.cpp.o -c /home/annil/Desktop/project/code/Hey_Spark_OpenVINO/wav_utils/record_voice.cpp
 
 CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/record_voice.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/record_voice.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/wav_utils/record_voice.cpp > CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/record_voice.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/annil/Desktop/project/code/Hey_Spark_OpenVINO/wav_utils/record_voice.cpp > CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/record_voice.cpp.i
 
 CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/record_voice.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/record_voice.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/wav_utils/record_voice.cpp -o CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/record_voice.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/annil/Desktop/project/code/Hey_Spark_OpenVINO/wav_utils/record_voice.cpp -o CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/record_voice.cpp.s
 
 CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/record_voice.cpp.o.requires:
 .PHONY : CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/record_voice.cpp.o.requires
@@ -100,17 +100,17 @@ CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/record_voice.cpp.o.provides.
 
 CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/write_wav.cpp.o: CMakeFiles/voice_recognition_OpenVINO.dir/flags.make
 CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/write_wav.cpp.o: wav_utils/write_wav.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/annil/Desktop/project/code/Hey_Spark_OpenVINO/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/write_wav.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/write_wav.cpp.o -c /home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/wav_utils/write_wav.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/write_wav.cpp.o -c /home/annil/Desktop/project/code/Hey_Spark_OpenVINO/wav_utils/write_wav.cpp
 
 CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/write_wav.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/write_wav.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/wav_utils/write_wav.cpp > CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/write_wav.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/annil/Desktop/project/code/Hey_Spark_OpenVINO/wav_utils/write_wav.cpp > CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/write_wav.cpp.i
 
 CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/write_wav.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/write_wav.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/wav_utils/write_wav.cpp -o CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/write_wav.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/annil/Desktop/project/code/Hey_Spark_OpenVINO/wav_utils/write_wav.cpp -o CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/write_wav.cpp.s
 
 CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/write_wav.cpp.o.requires:
 .PHONY : CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/write_wav.cpp.o.requires
@@ -153,6 +153,6 @@ CMakeFiles/voice_recognition_OpenVINO.dir/clean:
 .PHONY : CMakeFiles/voice_recognition_OpenVINO.dir/clean
 
 CMakeFiles/voice_recognition_OpenVINO.dir/depend:
-	cd /home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO /home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO /home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO /home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO /home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/CMakeFiles/voice_recognition_OpenVINO.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/annil/Desktop/project/code/Hey_Spark_OpenVINO && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/annil/Desktop/project/code/Hey_Spark_OpenVINO /home/annil/Desktop/project/code/Hey_Spark_OpenVINO /home/annil/Desktop/project/code/Hey_Spark_OpenVINO /home/annil/Desktop/project/code/Hey_Spark_OpenVINO /home/annil/Desktop/project/code/Hey_Spark_OpenVINO/CMakeFiles/voice_recognition_OpenVINO.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/voice_recognition_OpenVINO.dir/depend
 

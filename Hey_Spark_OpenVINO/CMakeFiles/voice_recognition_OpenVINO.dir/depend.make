@@ -38,7 +38,6 @@ CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_openVINO.cpp.o: /opt
 CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_openVINO.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_imemory_state.hpp
 CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_openVINO.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_input_info.hpp
 CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_openVINO.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_layers.h
-CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_openVINO.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_layers_property.hpp
 CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_openVINO.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_layouts.h
 CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_openVINO.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_locked_memory.hpp
 CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_openVINO.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_plugin.hpp

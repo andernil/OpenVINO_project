@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/voice_recognition_openVINO.cpp
+/home/annil/Desktop/project/code/Hey_Spark_OpenVINO/voice_recognition_openVINO.cpp
 iostream
 -
 map
@@ -22,37 +22,13 @@ iomanip
 inference_engine.hpp
 -
 record_voice.h
-/home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/record_voice.h
+/home/annil/Desktop/project/code/Hey_Spark_OpenVINO/record_voice.h
 write_wav.h
-/home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/write_wav.h
+/home/annil/Desktop/project/code/Hey_Spark_OpenVINO/write_wav.h
 cstdlib
 -
-
-/home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/wav_utils/record_voice.cpp
-stdio.h
+chrono
 -
-stdlib.h
--
-ctime
--
-portaudio.h
-/home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/wav_utils/portaudio.h
-record_voice.h
-/home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/wav_utils/record_voice.h
-
-/home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/wav_utils/record_voice.h
-
-/home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/wav_utils/write_wav.cpp
-stdio.h
--
-stdlib.h
--
-fstream
--
-write_wav.h
-/home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/wav_utils/write_wav.h
-
-/home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/wav_utils/write_wav.h
 
 /opt/intel/computer_vision_sdk/inference_engine/include/cpp/ie_cnn_net_reader.h
 string
@@ -541,8 +517,6 @@ ie_layers_property.hpp
 /opt/intel/computer_vision_sdk/inference_engine/include/ie_layers_property.hpp
 ie_icnn_network.hpp
 /opt/intel/computer_vision_sdk/inference_engine/include/ie_icnn_network.hpp
-
-/opt/intel/computer_vision_sdk/inference_engine/include/ie_layers_property.hpp
 
 /opt/intel/computer_vision_sdk/inference_engine/include/ie_layouts.h
 algorithm
