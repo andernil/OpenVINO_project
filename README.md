@@ -35,6 +35,11 @@ Debug output is:
 and includes the execution time for every stage. 
 -The output from the minimal output.
 
+Time outputs are printed for two different ways of measuring: 
+-The execution time from the Inference Engine
+-CLOCK_MONOTONIC after recording the sample but before .wav-exporting and MFCC-
+processing. This is the same way as in Skafså's master thesis.
+
 Requirements:
 -OS: CentOS or Ubuntu (as per Intel's instructions for OpenVINO)
 -Intel OpenVINO framework for running the program
