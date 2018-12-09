@@ -1,0 +1,23 @@
+
+------NOW RECORDING!!------
+
+Recorded 172800 of data
+Filling input buffer
+Results:
+Neural Network output
+0.999997
+2.78052e-06
+Execution time from IE: 5207us
+Execution time ala Skafsaa: 13.82ms
+---------------------------------------
+Inference Engine measurements
+Average processing time: 5.207ms
+Mean processing time: 5.207ms
+Fastest processing time: 5.207ms
+Average throughput: 192 samples per second
+------------------------------
+With MFCC:
+Average processing time: 13.82ms
+Mean processing time: 13.82ms
+Fastest processing time: 13.82ms
+Average throughput: 72.35 samples per second

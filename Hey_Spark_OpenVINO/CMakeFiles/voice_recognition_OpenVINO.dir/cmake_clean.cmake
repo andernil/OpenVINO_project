@@ -1,5 +1,5 @@
 FILE(REMOVE_RECURSE
-  "CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_openVINO.cpp.o"
+  "CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_OpenVINO.cpp.o"
   "CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/record_voice.cpp.o"
   "CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/write_wav.cpp.o"
   "voice_recognition_OpenVINO.pdb"

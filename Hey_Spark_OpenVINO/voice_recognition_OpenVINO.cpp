@@ -8,7 +8,6 @@
 #include "record_voice.h"
 #include "write_wav.h"
 #include <cstdlib>
-#include <chrono>
 
 using namespace InferenceEngine;
 
@@ -26,8 +25,11 @@ const char* input_processed_sample_name = "recordings/data.csv";
 // Function prototypes
 void load_sample(float* input_buffer);
 void record_input(float* input_buffer);
+double getCurrentTimestamp();
 
-double start_time = 0;
+// Timestamp functions
+double skafsaa_start = 0;
+double skafsaa_preprocessing_start = 0;
 
 int main(int argc, char *argv[]) {
 	// Input argument variables
@@ -50,10 +52,13 @@ int main(int argc, char *argv[]) {
 
 	// Timestamps
 	long long execution_time_buffer[NUM_LOOPS];
-	double skafsaa_time[NUM_LOOPS];
+	double skafsaa_time_buffer[NUM_LOOPS];
+	double skafsaa_preprocessing_time_buffer[NUM_LOOPS];
+	
 	// Processing time average
 	long long processing_avg = 0;
 	double skafsaa_avg = 0;
+	double skafsaa_preprocessing_avg = 0;
 
 	// 1. Load plugin
 	if(DEBUG)	
@@ -128,11 +133,14 @@ int main(int argc, char *argv[]) {
 	// Loop for either inference speed testing or speech recognition testing
   for(int loop = 0; loop < NUM_LOOPS; loop++)
   {
-	auto start = std::chrono::high_resolution_clock::now();
 	  if(DEBUG)	
 		  std::cout << "Preparing data" << std::endl;
 		if(USE_SAMPLE){
-			std::cout << "Using sampled data" << std::endl;
+			std::cout << "Using sampled data" << std::endl;	
+			// Take first timestamp ala Skafså, nearly eqeuivalent to saving .wav and performing
+			// mfcc-conversion
+			skafsaa_start = getCurrentTimestamp();
+			skafsaa_preprocessing_start = skafsaa_start;
 	 	  load_sample(&input_audio[0]);
 		}
 		else
@@ -145,6 +153,8 @@ int main(int argc, char *argv[]) {
   	}	
 
 		// 7. Start synchronous inference
+		// Get timestamp for preprocessing done ala Skafså
+		double skafsaa_preprocessing_stop = getCurrentTimestamp();
 		if(DEBUG)	
 			std::cout << "Starting synchronous inference" << std::endl;
 		infer_request.Infer();
@@ -153,7 +163,10 @@ int main(int argc, char *argv[]) {
 		if(DEBUG)	
 			std::cout << "Retrieving output data" << std::endl;
 		Blob::Ptr output = infer_request.GetBlob(firstOutputName);
-		auto stop = std::chrono::high_resolution_clock::now();
+
+		// Get processing stop time ala Skafså
+		double skafsaa_stop = getCurrentTimestamp();
+
 		// Get performance statistics for each layer
 		if(DEBUG)
 			std::cout << "Getting performance statistics for each layer" << std::endl;
@@ -161,12 +174,11 @@ int main(int argc, char *argv[]) {
 		std::map<std::string, InferenceEngineProfileInfo>::iterator it = Info.begin();
 		if(DEBUG)
 			std::cout << "----PERFORMANCE STATISTICS----" << std::endl;
-		long long exec_time = 0;
-
+		execution_time_buffer[loop] = 0;
 		while(it != Info.end())
 		{	
 			InferenceEngineProfileInfo layer_info= it->second;
-	 		exec_time += layer_info.realTime_uSec;
+	 		execution_time_buffer[loop] += layer_info.realTime_uSec;
 			if(DEBUG)
 			{
 				std::cout << "Performance stats for: " << it->first << std::endl;
@@ -185,46 +197,67 @@ int main(int argc, char *argv[]) {
 			}
 			it++;
 		}
-		std::cout << "Results:" << std::endl;
+		skafsaa_time_buffer[loop] = skafsaa_stop-skafsaa_start;
+		skafsaa_preprocessing_time_buffer[loop] = skafsaa_preprocessing_stop - skafsaa_preprocessing_start;
 
+		std::cout << "Results:" << std::endl;
 		// Print output data and execution time
 		auto output_data = output->buffer().as<PrecisionTrait<Precision::FP32>::value_type*>();
 		std::cout << "Neural Network output" << std::endl;
 		for(int i = 0; i < outputDims[0] * outputDims[1]; i++)
 		{
 		  std::cout << output_data[i] << std::endl;
-		}	
-		std::cout << "Execution time from IE: " << exec_time << "us" << std::endl;
-		std::chrono::duration<double> elapsed = stop - start;
-		skafsaa_time[loop] = double(elapsed.count())*1000;
-		std::cout << "Execution time ala Skafsaa: " << std::setprecision(4) << skafsaa_time[loop] << "ms" << std::endl;
+		}
+
+		std::cout << "Execution time from IE:     " << std::setprecision(4) << double(execution_time_buffer[loop])/1000 << "ms" << std::endl;
+		std::cout << "Execution time ala Skafsaa: " << std::setprecision(4) << skafsaa_time_buffer[loop] << " ms " << "with " << skafsaa_preprocessing_time_buffer[loop] << " ms of preprocessing" << std::endl;
 		std::cout << "---------------------------------------" << std::endl;
 
 		// Add to running average and buffer
-		processing_avg += exec_time;
-		skafsaa_avg += skafsaa_time[loop];
-		execution_time_buffer[loop] = exec_time;
+		processing_avg += execution_time_buffer[loop];
+		skafsaa_avg += skafsaa_time_buffer[loop];
+		skafsaa_preprocessing_avg += skafsaa_preprocessing_time_buffer[loop];
   }
 
 	// Calculate average and sort buffer
 	double average = processing_avg / NUM_LOOPS;
 	double skafsaa_average = skafsaa_avg / NUM_LOOPS;
+	double skafsaa_preprocessing_average = skafsaa_preprocessing_avg / NUM_LOOPS;
+
+	// Sort the time arrays
 	std::sort(execution_time_buffer, execution_time_buffer + NUM_LOOPS);
-	std::sort(skafsaa_time, skafsaa_time + NUM_LOOPS);
+	std::sort(skafsaa_time_buffer, skafsaa_time_buffer + NUM_LOOPS);
+	std::sort(skafsaa_preprocessing_time_buffer, skafsaa_preprocessing_time_buffer + NUM_LOOPS);
+
 	// Print time and throughput calculations
 	std::cout << "Inference Engine measurements" << std::endl;
-	std::cout << "Average processing time: " << std::setprecision(4) << average/1000 << "ms" << std::endl;
-	std::cout << "Mean processing time: " << std::setprecision(4) <<  double(execution_time_buffer[int(NUM_LOOPS/2)])/1000 << "ms" << std::endl;
-	std::cout << "Fastest processing time: " << std::setprecision(4) << double(execution_time_buffer[0])/1000 << "ms" << std::endl;
-	std::cout << "Average throughput: " << 1000*1000/average << " samples per second" << std::endl;
+	std::cout << "Time   	     Avg: " << std::setprecision(4) << average/1000 << "ms.         Median: "
+					  << double(execution_time_buffer[int(NUM_LOOPS/2)])/1000 << "ms.         Fastest: " 
+						<< double(execution_time_buffer[0])/1000 << "ms." << std::endl;
+
+	std::cout << "Throughput   Avg: " << 1000*1000/average << " samples/s. Median: "
+						<< 1000*1000/double(execution_time_buffer[int(NUM_LOOPS/2)]) << " samples/s. Fastest: "
+						<< 1000*1000/double(execution_time_buffer[0]) << " samples/s." << std::endl;
 
 	std::cout << "------------------------------" << std::endl;
-	
+
 	std::cout << "With MFCC:" << std::endl;
+	std::cout << "Preprocessing time      Avg: " << std::setprecision(4) << skafsaa_preprocessing_average << "ms.         Median: " << double(skafsaa_preprocessing_time_buffer[int(NUM_LOOPS/2)]) << "ms.         Fastest: " 
+						<< double(skafsaa_preprocessing_time_buffer[0]) << "ms." << std::endl;
+
+	std::cout << "Total processing time   Avg: "  << std::setprecision(4) << skafsaa_average << "ms.         Median: " << double(skafsaa_time_buffer[int(NUM_LOOPS/2)]) << "ms.         Fastest: " 
+						<< double(skafsaa_time_buffer[0]) << "ms." << std::endl;
+	std::cout << "Throughput              Avg: " << 1000/skafsaa_average << " samples/s. Median: "
+						<< 1000/double(skafsaa_time_buffer[int(NUM_LOOPS/2)]) << " samples/s. Fastest: "
+						<< 1000/double(skafsaa_time_buffer[0]) << " samples/s." << std::endl;
+/*
+	std::cout << "Preprocessing time: " << std::setprecision(4) << 
 	std::cout << "Average processing time: " << std::setprecision(4) << skafsaa_average << "ms" << std::endl;
-	std::cout << "Mean processing time: " << std::setprecision(4) <<  double(skafsaa_time[int(NUM_LOOPS/2)]) << "ms" << std::endl;
-	std::cout << "Fastest processing time: " << std::setprecision(4) << double(skafsaa_time[0]) << "ms" << std::endl;
+	std::cout << "Mean processing time: " << std::setprecision(4) <<  double(skafsaa_time_buffer[int(NUM_LOOPS/2)]) << "ms" << std::endl;
+	std::cout << "Fastest processing time: " << std::setprecision(4) << double(skafsaa_time_buffer[0]) << "ms" << std::endl;
 	std::cout << "Average throughput: " << 1000/skafsaa_average << " samples per second" << std::endl;
+*/
+	//std::cout << "Preprocessing time:" << stop_preprocessing - start_preprocessing << std::endl;
 }
 
 /////////// HELPER FUNCTIONS //////////////////////////////
@@ -273,6 +306,10 @@ void record_input(float* input_buffer)
   record_voice(recorded_samples);
   std::cout << "Recorded " << num_bytes << " of data" << std::endl;
 
+	// Take timestamp ala Skafså
+	skafsaa_start = getCurrentTimestamp();
+	skafsaa_preprocessing_start= skafsaa_start;
+
   // Export .wav file
   write_wav("recordings/voice_rec_live.wav", recorded_samples, num_bytes, NUM_CHANNELS, SAMPLE_RATE, 32); //
 
@@ -291,4 +328,9 @@ void record_input(float* input_buffer)
     std::cout << "Input file could not be read" << std::endl;
   }
   free(recorded_samples);
+}
+double getCurrentTimestamp(){
+	timespec a;
+	clock_gettime(CLOCK_MONOTONIC, &a);
+	return(1000*((double(a.tv_nsec) * 1.0e-9) + double(a.tv_sec)));
 }
