@@ -4,9 +4,9 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/voice_recognition_OpenVINO.cpp" "/home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_OpenVINO.cpp.o"
-  "/home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/wav_utils/record_voice.cpp" "/home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/record_voice.cpp.o"
-  "/home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/wav_utils/write_wav.cpp" "/home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/write_wav.cpp.o"
+  "/home/annil/Desktop/project/code/Hey_Spark_OpenVINO/voice_recognition_OpenVINO.cpp" "/home/annil/Desktop/project/code/Hey_Spark_OpenVINO/CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_OpenVINO.cpp.o"
+  "/home/annil/Desktop/project/code/Hey_Spark_OpenVINO/wav_utils/record_voice.cpp" "/home/annil/Desktop/project/code/Hey_Spark_OpenVINO/CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/record_voice.cpp.o"
+  "/home/annil/Desktop/project/code/Hey_Spark_OpenVINO/wav_utils/write_wav.cpp" "/home/annil/Desktop/project/code/Hey_Spark_OpenVINO/CMakeFiles/voice_recognition_OpenVINO.dir/wav_utils/write_wav.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

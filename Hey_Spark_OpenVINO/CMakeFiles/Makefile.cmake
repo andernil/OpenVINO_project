@@ -13,17 +13,13 @@ SET(CMAKE_MAKEFILE_DEPENDS
   "CMakeLists.txt"
   "/opt/intel/computer_vision_sdk/inference_engine/share/InferenceEngineConfig-version.cmake"
   "/opt/intel/computer_vision_sdk/inference_engine/share/InferenceEngineConfig.cmake"
-  "/opt/intel/computer_vision_sdk/inference_engine/src/extension/CMakeLists.txt"
-  "/opt/intel/computer_vision_sdk/inference_engine/src/extension/cmake/CPUID.cmake"
-  "/opt/intel/computer_vision_sdk/inference_engine/src/extension/cmake/OptimizationFlags.cmake"
-  "/opt/intel/computer_vision_sdk/inference_engine/src/extension/cmake/feature_defs.cmake"
   "/usr/share/cmake/Modules/CMakeCInformation.cmake"
   "/usr/share/cmake/Modules/CMakeCXXInformation.cmake"
   "/usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake"
   "/usr/share/cmake/Modules/CMakeGenericSystem.cmake"
   "/usr/share/cmake/Modules/CMakeParseArguments.cmake"
   "/usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake"
-  "/usr/share/cmake/Modules/CheckCXXSourceRuns.cmake"
+  "/usr/share/cmake/Modules/CMakeUnixFindMake.cmake"
   "/usr/share/cmake/Modules/Compiler/GNU-C.cmake"
   "/usr/share/cmake/Modules/Compiler/GNU-CXX.cmake"
   "/usr/share/cmake/Modules/Compiler/GNU.cmake"
@@ -45,11 +41,9 @@ SET(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 SET(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
-  "ie_cpu_extension/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 SET(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/voice_recognition_OpenVINO.dir/DependInfo.cmake"
-  "ie_cpu_extension/CMakeFiles/ie_cpu_extension.dir/DependInfo.cmake"
   )

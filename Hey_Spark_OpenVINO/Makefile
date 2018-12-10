@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO
+CMAKE_SOURCE_DIR = /home/annil/Desktop/project/code/Hey_Spark_OpenVINO
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO
+CMAKE_BINARY_DIR = /home/annil/Desktop/project/code/Hey_Spark_OpenVINO
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -72,9 +72,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/CMakeFiles /home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/annil/Desktop/project/code/Hey_Spark_OpenVINO/CMakeFiles /home/annil/Desktop/project/code/Hey_Spark_OpenVINO/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/annil/Desktop/project/OpenVINO_project/Hey_Spark_OpenVINO/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/annil/Desktop/project/code/Hey_Spark_OpenVINO/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -113,19 +113,6 @@ voice_recognition_OpenVINO: cmake_check_build_system
 voice_recognition_OpenVINO/fast:
 	$(MAKE) -f CMakeFiles/voice_recognition_OpenVINO.dir/build.make CMakeFiles/voice_recognition_OpenVINO.dir/build
 .PHONY : voice_recognition_OpenVINO/fast
-
-#=============================================================================
-# Target rules for targets named ie_cpu_extension
-
-# Build rule for target.
-ie_cpu_extension: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ie_cpu_extension
-.PHONY : ie_cpu_extension
-
-# fast build rule for target.
-ie_cpu_extension/fast:
-	$(MAKE) -f ie_cpu_extension/CMakeFiles/ie_cpu_extension.dir/build.make ie_cpu_extension/CMakeFiles/ie_cpu_extension.dir/build
-.PHONY : ie_cpu_extension/fast
 
 voice_recognition_OpenVINO.o: voice_recognition_OpenVINO.cpp.o
 .PHONY : voice_recognition_OpenVINO.o
@@ -208,7 +195,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... voice_recognition_OpenVINO"
-	@echo "... ie_cpu_extension"
 	@echo "... voice_recognition_OpenVINO.o"
 	@echo "... voice_recognition_OpenVINO.i"
 	@echo "... voice_recognition_OpenVINO.s"
