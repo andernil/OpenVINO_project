@@ -1,4 +1,5 @@
-Hey_Spark_OpenVINO/CMakeCache.txt
-Hey_Spark_OpenVINO/CMakeFiles
-Hey_Spark_OpenVINO/Makefile
+# Ignore unnecessary CMake-files
+CMakeCache.txt
+CMakeFiles
+Makefile
 
