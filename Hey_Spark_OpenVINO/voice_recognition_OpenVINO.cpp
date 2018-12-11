@@ -33,7 +33,7 @@ double skafsaa_preprocessing_start = 0;
 
 int main(int argc, char *argv[]) {
 	// Input argument variables
-  std::string DEVICE = "CPU";
+	std::string DEVICE = "CPU";
 	int DEBUG = 0;
 	int USE_SAMPLE = 0;
 	if(argc != 7){
@@ -74,14 +74,25 @@ int main(int argc, char *argv[]) {
 	CNNNetwork network = network_reader.getNetwork();
 
 	// 3. Configure input and output
+	// Get input info and set input layout and precision
 	if(DEBUG)	
 		std::cout << "Configuring input and output" << std::endl;
 	InputInfo::Ptr input_info = network.getInputsInfo().begin()->second;
 	std::string input_name = network.getInputsInfo().begin()->first;
-
+	
 	input_info->setLayout(Layout::NCHW);
 	input_info->setPrecision(Precision::FP32);
   
+	// Print input info	
+	std::cout << "Getting network info" << std::endl;
+	static size_t num_channels = input_info->getTensorDesc().getDims()[1];
+	static size_t width = input_info->getTensorDesc().getDims()[3];
+	static size_t height = input_info->getTensorDesc().getDims()[2];
+	if(DEBUG){
+		std::cout << "Num. input channels: " << num_channels << std::endl;
+		std::cout << "Input dimensions: " << width << "x" << height << std::endl;
+  }
+
 	// Get output info and set output precision
   OutputsDataMap outputInfo(network.getOutputsInfo());
   std::string firstOutputName;
@@ -99,7 +110,7 @@ int main(int argc, char *argv[]) {
     }
     item.second->setPrecision(Precision::FP32);
   }
-  // Getting output dimensions
+  // Print output info
   const SizeVector outputDims = outputInfo.begin()->second->getDims();
 	if(DEBUG)	
 		std::cout << "Output dims: " << outputDims[0] << "x" << outputDims[1] << std::endl;
@@ -121,15 +132,6 @@ int main(int argc, char *argv[]) {
 	Blob::Ptr input = infer_request.GetBlob(input_name);
 	auto input_data = input->buffer().as<PrecisionTrait<Precision::FP32>::value_type *>();
 
-	if(DEBUG){
-		std::cout << "Getting network info" << std::endl;
-		size_t num_channels = input->getTensorDesc().getDims()[1];
-		size_t width = input->getTensorDesc().getDims()[3];
-		size_t height = input->getTensorDesc().getDims()[2];	
-		std::cout << "Num. input channels: " << num_channels << std::endl;
-		std::cout << "Input dimensions: " << width << "x" << height << std::endl;
-  }
-
 	// Loop for either inference speed testing or speech recognition testing
   for(int loop = 0; loop < NUM_LOOPS; loop++)
   {
@@ -137,7 +139,7 @@ int main(int argc, char *argv[]) {
 		  std::cout << "Preparing data" << std::endl;
 		if(USE_SAMPLE){
 			std::cout << "Using sampled data" << std::endl;	
-			// Take first timestamp ala Skafså, nearly eqeuivalent to saving .wav and performing
+			// Take first timestamp ala Skafså, nearly equivalent to saving .wav and performing
 			// mfcc-conversion
 			skafsaa_start = getCurrentTimestamp();
 			skafsaa_preprocessing_start = skafsaa_start;
@@ -147,7 +149,7 @@ int main(int argc, char *argv[]) {
   		record_input(&input_audio[0]);
 
 		std::cout << "Filling input buffer" << std::endl;
-  	for(int i = 0; i < INPUT_SIZE; i++)
+  	for(int i = 0; i < num_channels*width*height; i++)
   	{
  	    input_data[i] = input_audio[i];
   	}	

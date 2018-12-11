@@ -351,6 +351,8 @@ details/ie_so_pointer.hpp
 /opt/intel/computer_vision_sdk/inference_engine/include/details/ie_so_pointer.hpp
 ie_iextension.h
 /opt/intel/computer_vision_sdk/inference_engine/include/ie_iextension.h
+mkldnn/mkldnn_extension_ptr.hpp
+/opt/intel/computer_vision_sdk/inference_engine/include/mkldnn/mkldnn_extension_ptr.hpp
 string
 -
 memory
@@ -391,8 +393,6 @@ ie_preprocess.hpp
 /opt/intel/computer_vision_sdk/inference_engine/include/ie_preprocess.hpp
 ie_input_info.hpp
 /opt/intel/computer_vision_sdk/inference_engine/include/ie_input_info.hpp
-ie_icnn_network_stats.hpp
-/opt/intel/computer_vision_sdk/inference_engine/include/ie_icnn_network_stats.hpp
 ie_iextension.h
 /opt/intel/computer_vision_sdk/inference_engine/include/ie_iextension.h
 memory
@@ -401,20 +401,6 @@ map
 -
 string
 -
-
-/opt/intel/computer_vision_sdk/inference_engine/include/ie_icnn_network_stats.hpp
-string
--
-memory
--
-limits
--
-vector
--
-map
--
-details/ie_irelease.hpp
-/opt/intel/computer_vision_sdk/inference_engine/include/details/ie_irelease.hpp
 
 /opt/intel/computer_vision_sdk/inference_engine/include/ie_iexecutable_network.hpp
 ie_common.h
@@ -537,10 +523,6 @@ ie_blob.h
 /opt/intel/computer_vision_sdk/inference_engine/include/ie_blob.h
 ie_device.hpp
 /opt/intel/computer_vision_sdk/inference_engine/include/ie_device.hpp
-ie_layers_property.hpp
-/opt/intel/computer_vision_sdk/inference_engine/include/ie_layers_property.hpp
-ie_icnn_network.hpp
-/opt/intel/computer_vision_sdk/inference_engine/include/ie_icnn_network.hpp
 
 /opt/intel/computer_vision_sdk/inference_engine/include/ie_layouts.h
 algorithm
@@ -675,10 +657,6 @@ ie_plugin_dispatcher.hpp
 -
 ie_plugin_config.hpp
 -
-ie_icnn_network.hpp
--
-ie_icnn_network_stats.hpp
--
 cpp/ie_cnn_net_reader.h
 -
 cpp/ie_plugin_cpp.hpp
@@ -686,6 +664,36 @@ cpp/ie_plugin_cpp.hpp
 cpp/ie_executable_network.hpp
 -
 ie_version.hpp
+-
+
+/opt/intel/computer_vision_sdk/inference_engine/include/mkldnn/mkldnn_extension.hpp
+ie_iextension.h
+-
+mkldnn_generic_primitive.hpp
+/opt/intel/computer_vision_sdk/inference_engine/include/mkldnn/mkldnn_generic_primitive.hpp
+
+/opt/intel/computer_vision_sdk/inference_engine/include/mkldnn/mkldnn_extension_ptr.hpp
+details/ie_so_pointer.hpp
+/opt/intel/computer_vision_sdk/inference_engine/include/mkldnn/details/ie_so_pointer.hpp
+mkldnn/mkldnn_extension.hpp
+/opt/intel/computer_vision_sdk/inference_engine/include/mkldnn/mkldnn/mkldnn_extension.hpp
+string
+-
+memory
+-
+
+/opt/intel/computer_vision_sdk/inference_engine/include/mkldnn/mkldnn_extension_types.hpp
+ie_common.h
+/opt/intel/computer_vision_sdk/inference_engine/include/mkldnn/ie_common.h
+ie_precision.hpp
+/opt/intel/computer_vision_sdk/inference_engine/include/mkldnn/ie_precision.hpp
+
+/opt/intel/computer_vision_sdk/inference_engine/include/mkldnn/mkldnn_generic_primitive.hpp
+mkldnn_extension_types.hpp
+/opt/intel/computer_vision_sdk/inference_engine/include/mkldnn/mkldnn_extension_types.hpp
+details/ie_irelease.hpp
+/opt/intel/computer_vision_sdk/inference_engine/include/mkldnn/details/ie_irelease.hpp
+vector
 -
 
 wav_utils/record_voice.h

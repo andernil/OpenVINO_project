@@ -30,7 +30,6 @@ CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_OpenVINO.cpp.o: /opt
 CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_OpenVINO.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_extension.h
 CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_OpenVINO.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_icnn_net_reader.h
 CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_OpenVINO.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_icnn_network.hpp
-CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_OpenVINO.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_icnn_network_stats.hpp
 CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_OpenVINO.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_iexecutable_network.hpp
 CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_OpenVINO.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_iextension.h
 CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_OpenVINO.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_ihetero_plugin.hpp
@@ -50,6 +49,10 @@ CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_OpenVINO.cpp.o: /opt
 CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_OpenVINO.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_tensor_info.hpp
 CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_OpenVINO.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/ie_version.hpp
 CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_OpenVINO.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/inference_engine.hpp
+CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_OpenVINO.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/mkldnn/mkldnn_extension.hpp
+CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_OpenVINO.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/mkldnn/mkldnn_extension_ptr.hpp
+CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_OpenVINO.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/mkldnn/mkldnn_extension_types.hpp
+CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_OpenVINO.cpp.o: /opt/intel/computer_vision_sdk/inference_engine/include/mkldnn/mkldnn_generic_primitive.hpp
 CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_OpenVINO.cpp.o: wav_utils/record_voice.h
 CMakeFiles/voice_recognition_OpenVINO.dir/voice_recognition_OpenVINO.cpp.o: wav_utils/write_wav.h
 
