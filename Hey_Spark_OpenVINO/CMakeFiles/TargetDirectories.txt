@@ -1,1 +1,0 @@
-/home/annil/Desktop/project/code/Hey_Spark_OpenVINO/CMakeFiles/voice_recognition_OpenVINO.dir
