@@ -152,9 +152,6 @@ int main(int argc, char *argv[]) {
 			std::cout << "Retrieving output data" << std::endl;
 		Blob::Ptr output = infer_request.GetBlob(firstOutputName);
 
-		// Get processing stop time ala Skafså
-		double skafsaa_stop = getCurrentTimestamp();
-
 		// Get performance statistics for each layer
 		if(DEBUG)
 			std::cout << "Getting performance statistics for each layer" << std::endl;
