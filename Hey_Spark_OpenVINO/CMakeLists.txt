@@ -21,17 +21,6 @@ if( BUILD_SAMPLE_NAME AND NOT ${BUILD_SAMPLE_NAME} STREQUAL ${TARGET_NAME} )
     return()
 endif()
 
-
-#add_subdirectory(wav_utils)
-#file (GLOB SRC
-#        ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
-#        )
-
-#file (GLOB SRC
-#	"*.cpp"
-#	"*.h"
-#	"wav_utils/*h"
- #    )
 file (GLOB SRC
         "*.cpp"
 	"wav_utils/*.h"
@@ -56,9 +45,8 @@ endif()
 # Empty name lists them directly under the .vcproj
 source_group("src" FILES ${SRC})
 
-link_directories(${LIB_FOLDER}) # ${CMAKE_CURRENT_SOURCE_DIR}/wav_utils/
+link_directories(${LIB_FOLDER})
 
-#add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/wav_utils)
 # Create library file from sources.
 add_executable(${TARGET_NAME} ${SRC} wav_utils/record_voice.h wav_utils/write_wav.h)
 
