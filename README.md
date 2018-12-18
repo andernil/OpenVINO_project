@@ -26,32 +26,47 @@ using PortAudio.
 
 
 Minimal output info is:
+
 -Loading sample/recordnig data
+
 -Filling buffer
+
 -Results for each iteration
+
 -Average, mean and fastest time
+
 -Average throughput
 
 
 Debug output is:
 -Every step of the setup and inferring process
+
 -Detailed info on every processing layer, seperated into what's running on CPU and FPGA
 and includes the execution time for every stage. 
+
 -The output from the minimal output.
 
 
 Time outputs are printed for two different ways of measuring: 
+
 -The execution time from the Inference Engine
+
 -CLOCK_MONOTONIC after recording the sample but before .wav-exporting and MFCC-
 processing. This is the same way as in Skafså's master thesis.
 
 
 Requirements:
+
 -OS: CentOS or Ubuntu (as per Intel's instructions for OpenVINO)
+
 -Intel OpenVINO framework for running the program
+
 -OpenVINO with FPGA support if running on FPGA
+
 -PortAudio (http://portaudio.com/docs/v19-doxydocs/index.html)
+
 -Intel Quartus for running the progrma on FPGA
+
 -Intel PAC or Intel Arria 10 GX Development Kit
 
 
