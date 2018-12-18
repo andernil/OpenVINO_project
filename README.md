@@ -17,11 +17,17 @@ The executable program takes several input arguments in the following way:
 
 
 [NETWORK_PATH XML] is the path to the network.xml file (in this case Optimized/wakeword.bin)
+
 [WEIGHTS_PATH BIN] is the path to the network.bin file (in this case Optimized/wakeword.xml)
+
+
 [NUM_ITERATIONS] is the number of iterations the program will record and infer
+
 [SAMPLE or LIVE] is whether the program should use the pre-recorded sample or record new data
 using PortAudio.
+
 [CPU or FPGA] is whether to infer to only CPU or FPGA with CPU-fallback
+
 [RELEASE or DEBUG] is whether to have minimal output info or debug info
 
 
@@ -76,9 +82,13 @@ and 7.53 for CPU, but this is probably due to the layers on the CPU.
 
 
 The test setup was:
+
 -HP Z800 workstation
+
 -Intel Xeon E5620 @ 2.40GHz
+
 -8GiB DDR3 Ram
+
 -Intel Altera Arria 10 GX Develpment Kit in a PCIe x8 Gen1 slot
 
 
