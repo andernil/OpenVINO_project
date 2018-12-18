@@ -27,7 +27,7 @@ using PortAudio.
 
 Minimal output info is:
 
--Loading sample/recordnig data
+-Loading sample/recording data
 
 -Filling buffer
 
@@ -47,12 +47,8 @@ and includes the execution time for every stage.
 -The output from the minimal output.
 
 
-Time outputs are printed for two different ways of measuring: 
+Time outputs are printed based on the execution time from the Inference Engine.
 
--The execution time from the Inference Engine
-
--CLOCK_MONOTONIC after recording the sample but before .wav-exporting and MFCC-
-processing. This is the same way as in Skafså's master thesis.
 
 
 Requirements:
