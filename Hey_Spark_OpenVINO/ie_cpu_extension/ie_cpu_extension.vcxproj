@@ -1,0 +1,381 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{448640C2-9EC3-355F-8D59-4C3D41BD0901}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>ie_cpu_extension</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Anders\Desktop\Master\OpenVINO_project\Hey_Spark_OpenVINO\ie_cpu_extension\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ie_cpu_extension.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cpu_extension</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Anders\Desktop\Master\OpenVINO_project\Hey_Spark_OpenVINO\ie_cpu_extension\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ie_cpu_extension.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cpu_extension</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Anders\Desktop\Master\OpenVINO_project\Hey_Spark_OpenVINO\ie_cpu_extension\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">ie_cpu_extension.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">cpu_extension</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Anders\Desktop\Master\OpenVINO_project\Hey_Spark_OpenVINO\ie_cpu_extension\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">ie_cpu_extension.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">cpu_extension</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\PRIVATE;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\common;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\external\tbb\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /arch:SSE4.2</AdditionalOptions>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4251;4275;4267</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;IE_THREAD=IE_THREAD_TBB;HAVE_SSE;IMPLEMENT_INFERENCE_ENGINE_API;CMAKE_INTDIR="Debug";ie_cpu_extension_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>C:\Users\Anders\Desktop\Master\OpenVINO_project\Hey_Spark_OpenVINO\ie_cpu_extension\Debug\ie_cpu_extension.pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;IE_THREAD=IE_THREAD_TBB;HAVE_SSE;IMPLEMENT_INFERENCE_ENGINE_API;CMAKE_INTDIR=\"Debug\";ie_cpu_extension_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\PRIVATE;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\common;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\external\tbb\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\PRIVATE;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\common;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\external\tbb\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>-nodefaultlib:vcomp;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\lib\intel64\Debug\tbb_debug.lib;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\lib\intel64\Debug\inference_engined.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/Anders/Desktop/Master/OpenVINO_project/Hey_Spark_OpenVINO/ie_cpu_extension/Debug/cpu_extension.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/Anders/Desktop/Master/OpenVINO_project/Hey_Spark_OpenVINO/ie_cpu_extension/Debug/cpu_extension.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\PRIVATE;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\common;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\external\tbb\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /arch:SSE4.2</AdditionalOptions>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4251;4275;4267</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;IE_THREAD=IE_THREAD_TBB;HAVE_SSE;IMPLEMENT_INFERENCE_ENGINE_API;CMAKE_INTDIR="Release";ie_cpu_extension_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ProgramDataBaseFileName>C:\Users\Anders\Desktop\Master\OpenVINO_project\Hey_Spark_OpenVINO\ie_cpu_extension\Release\ie_cpu_extension.pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;IE_THREAD=IE_THREAD_TBB;HAVE_SSE;IMPLEMENT_INFERENCE_ENGINE_API;CMAKE_INTDIR=\"Release\";ie_cpu_extension_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\PRIVATE;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\common;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\external\tbb\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\PRIVATE;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\common;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\external\tbb\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>-nodefaultlib:vcomp;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\lib\intel64\Release\tbb.lib;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\lib\intel64\Release\inference_engine.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/Anders/Desktop/Master/OpenVINO_project/Hey_Spark_OpenVINO/ie_cpu_extension/Release/cpu_extension.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/Anders/Desktop/Master/OpenVINO_project/Hey_Spark_OpenVINO/ie_cpu_extension/Release/cpu_extension.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\PRIVATE;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\common;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\external\tbb\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /arch:SSE4.2</AdditionalOptions>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4251;4275;4267</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;IE_THREAD=IE_THREAD_TBB;HAVE_SSE;IMPLEMENT_INFERENCE_ENGINE_API;CMAKE_INTDIR="MinSizeRel";ie_cpu_extension_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ProgramDataBaseFileName>C:\Users\Anders\Desktop\Master\OpenVINO_project\Hey_Spark_OpenVINO\ie_cpu_extension\MinSizeRel\ie_cpu_extension.pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;IE_THREAD=IE_THREAD_TBB;HAVE_SSE;IMPLEMENT_INFERENCE_ENGINE_API;CMAKE_INTDIR=\"MinSizeRel\";ie_cpu_extension_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\PRIVATE;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\common;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\external\tbb\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\PRIVATE;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\common;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\external\tbb\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>-nodefaultlib:vcomp;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\lib\intel64\Release\tbb.lib;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\lib\intel64\Debug\inference_engined.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/Anders/Desktop/Master/OpenVINO_project/Hey_Spark_OpenVINO/ie_cpu_extension/MinSizeRel/cpu_extension.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/Anders/Desktop/Master/OpenVINO_project/Hey_Spark_OpenVINO/ie_cpu_extension/MinSizeRel/cpu_extension.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\PRIVATE;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\common;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\external\tbb\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /arch:SSE4.2</AdditionalOptions>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4251;4275;4267</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;IE_THREAD=IE_THREAD_TBB;HAVE_SSE;IMPLEMENT_INFERENCE_ENGINE_API;CMAKE_INTDIR="RelWithDebInfo";ie_cpu_extension_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>C:\Users\Anders\Desktop\Master\OpenVINO_project\Hey_Spark_OpenVINO\ie_cpu_extension\RelWithDebInfo\ie_cpu_extension.pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;IE_THREAD=IE_THREAD_TBB;HAVE_SSE;IMPLEMENT_INFERENCE_ENGINE_API;CMAKE_INTDIR=\"RelWithDebInfo\";ie_cpu_extension_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\PRIVATE;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\common;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\external\tbb\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\PRIVATE;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\common;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\external\tbb\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>-nodefaultlib:vcomp;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\lib\intel64\Release\tbb.lib;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\lib\intel64\Release\inference_engine.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/Anders/Desktop/Master/OpenVINO_project/Hey_Spark_OpenVINO/ie_cpu_extension/RelWithDebInfo/cpu_extension.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/Anders/Desktop/Master/OpenVINO_project/Hey_Spark_OpenVINO/ie_cpu_extension/RelWithDebInfo/cpu_extension.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Program Files (x86)/IntelSWTools/openvino/deployment_tools/inference_engine/src/extension/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Anders/Desktop/Master/OpenVINO_project/Hey_Spark_OpenVINO -BC:/Users/Anders/Desktop/Master/OpenVINO_project/Hey_Spark_OpenVINO --check-stamp-file C:/Users/Anders/Desktop/Master/OpenVINO_project/Hey_Spark_OpenVINO/ie_cpu_extension/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Program Files (x86)/IntelSWTools/openvino/deployment_tools/inference_engine/src/extension/CMakeLists.txt;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\CMakeLists.txt;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\cmake\CPUID.cmake;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\cmake\OptimizationFlags.cmake;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\cmake\feature_defs.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CheckCXXSourceRuns.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\FindThreads.cmake;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Anders\Desktop\Master\OpenVINO_project\Hey_Spark_OpenVINO\ie_cpu_extension\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Program Files (x86)/IntelSWTools/openvino/deployment_tools/inference_engine/src/extension/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Anders/Desktop/Master/OpenVINO_project/Hey_Spark_OpenVINO -BC:/Users/Anders/Desktop/Master/OpenVINO_project/Hey_Spark_OpenVINO --check-stamp-file C:/Users/Anders/Desktop/Master/OpenVINO_project/Hey_Spark_OpenVINO/ie_cpu_extension/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Program Files (x86)/IntelSWTools/openvino/deployment_tools/inference_engine/src/extension/CMakeLists.txt;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\CMakeLists.txt;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\cmake\CPUID.cmake;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\cmake\OptimizationFlags.cmake;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\cmake\feature_defs.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CheckCXXSourceRuns.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\FindThreads.cmake;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Anders\Desktop\Master\OpenVINO_project\Hey_Spark_OpenVINO\ie_cpu_extension\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Program Files (x86)/IntelSWTools/openvino/deployment_tools/inference_engine/src/extension/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Anders/Desktop/Master/OpenVINO_project/Hey_Spark_OpenVINO -BC:/Users/Anders/Desktop/Master/OpenVINO_project/Hey_Spark_OpenVINO --check-stamp-file C:/Users/Anders/Desktop/Master/OpenVINO_project/Hey_Spark_OpenVINO/ie_cpu_extension/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Program Files (x86)/IntelSWTools/openvino/deployment_tools/inference_engine/src/extension/CMakeLists.txt;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\CMakeLists.txt;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\cmake\CPUID.cmake;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\cmake\OptimizationFlags.cmake;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\cmake\feature_defs.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CheckCXXSourceRuns.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\FindThreads.cmake;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Anders\Desktop\Master\OpenVINO_project\Hey_Spark_OpenVINO\ie_cpu_extension\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Program Files (x86)/IntelSWTools/openvino/deployment_tools/inference_engine/src/extension/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Anders/Desktop/Master/OpenVINO_project/Hey_Spark_OpenVINO -BC:/Users/Anders/Desktop/Master/OpenVINO_project/Hey_Spark_OpenVINO --check-stamp-file C:/Users/Anders/Desktop/Master/OpenVINO_project/Hey_Spark_OpenVINO/ie_cpu_extension/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Program Files (x86)/IntelSWTools/openvino/deployment_tools/inference_engine/src/extension/CMakeLists.txt;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\CMakeLists.txt;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\cmake\CPUID.cmake;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\cmake\OptimizationFlags.cmake;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\cmake\feature_defs.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CheckCXXSourceRuns.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\FindThreads.cmake;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Anders\Desktop\Master\OpenVINO_project\Hey_Spark_OpenVINO\ie_cpu_extension\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_argmax.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_base.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_ctc_greedy.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_depth_to_space.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_detectionoutput.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_detectionoutput_onnx.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_expand.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_fill.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_gather.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_grn.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_interp.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_list.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_mvn.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_normalize.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_pad.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_powerfile.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_priorbox.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_priorbox_clustered.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_priorgridgenerator_onnx.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_proposal.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_proposal_onnx.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_psroi.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_range.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_region_yolo.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_reorg_yolo.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_resample.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_reverse_sequence.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_roifeatureextractor_onnx.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_shuffle_channels.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_simplernms.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_space_to_depth.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_squeeze.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_strided_slice.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_topkrois_onnx.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_unsqueeze.cpp" />
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\simple_copy.cpp" />
+    <ClInclude Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_base.hpp" />
+    <ClInclude Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_list.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\Anders\Desktop\Master\OpenVINO_project\Hey_Spark_OpenVINO\ZERO_CHECK.vcxproj">
+      <Project>{48FF3B29-71B3-35D8-998A-5F5AF0FDB3EF}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

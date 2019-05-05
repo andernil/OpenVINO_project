@@ -1,0 +1,91 @@
+<?xml version="1.0" ?>
+<mapping>
+	<map>
+		<framework name="dense_2_activation" out_port_id="dense_2"/>
+		<IR id="17" name="dense_2_activation" out_port_id="1"/>
+	</map>
+	<map>
+		<framework name="batch_normalization_1_scale" out_port_id="batch_normalization_1"/>
+		<IR id="3" name="Mul_/Fused_Mul_/FusedScaleShift_" out_port_id="3"/>
+	</map>
+	<map>
+		<framework name="max_pooling2d_3" out_port_id="max_pooling2d_3"/>
+		<IR id="12" name="max_pooling2d_3" out_port_id="1"/>
+	</map>
+	<map>
+		<framework name="conv2d_1_activation" out_port_id="conv2d_1"/>
+		<IR id="2" name="conv2d_1_activation" out_port_id="1"/>
+	</map>
+	<map>
+		<framework name="dense_1_activation" out_port_id="dense_1"/>
+		<IR id="15" name="dense_1_activation" out_port_id="1"/>
+	</map>
+	<map>
+		<framework name="dropout_2" out_port_id="max_pooling2d_2"/>
+		<IR id="8" name="max_pooling2d_2" out_port_id="1"/>
+	</map>
+	<map>
+		<framework name="max_pooling2d_2" out_port_id="max_pooling2d_2"/>
+		<IR id="8" name="max_pooling2d_2" out_port_id="1"/>
+	</map>
+	<map>
+		<framework name="conv2d_3" out_port_id="conv2d_3"/>
+		<IR id="9" name="conv2d_3" out_port_id="3"/>
+	</map>
+	<map>
+		<framework name="conv2d_2_activation" out_port_id="conv2d_2"/>
+		<IR id="6" name="conv2d_2_activation" out_port_id="1"/>
+	</map>
+	<map>
+		<framework name="dense_2" out_port_id="dense_2"/>
+		<IR id="16" name="dense_2" out_port_id="3"/>
+	</map>
+	<map>
+		<framework name="batch_normalization_3_scale" out_port_id="batch_normalization_3"/>
+		<IR id="11" name="Mul_427/Fused_Mul_/FusedScaleShift_" out_port_id="3"/>
+	</map>
+	<map>
+		<framework name="conv2d_3_activation" out_port_id="conv2d_3"/>
+		<IR id="10" name="conv2d_3_activation" out_port_id="1"/>
+	</map>
+	<map>
+		<framework name="dense_1" out_port_id="dense_1"/>
+		<IR id="14" name="dense_1" out_port_id="3"/>
+	</map>
+	<map>
+		<framework name="dense_3" out_port_id="dense_3"/>
+		<IR id="18" name="dense_3" out_port_id="3"/>
+	</map>
+	<map>
+		<framework name="batch_normalization_2_scale" out_port_id="batch_normalization_2"/>
+		<IR id="7" name="Mul_430/Fused_Mul_/FusedScaleShift_" out_port_id="3"/>
+	</map>
+	<map>
+		<framework name="conv2d_2" out_port_id="conv2d_2"/>
+		<IR id="5" name="conv2d_2" out_port_id="3"/>
+	</map>
+	<map>
+		<framework name="conv2d_1" out_port_id="conv2d_1"/>
+		<IR id="1" name="conv2d_1" out_port_id="3"/>
+	</map>
+	<map>
+		<framework name="dropout_1" out_port_id="max_pooling2d_1"/>
+		<IR id="4" name="max_pooling2d_1" out_port_id="1"/>
+	</map>
+	<map>
+		<framework name="max_pooling2d_1" out_port_id="max_pooling2d_1"/>
+		<IR id="4" name="max_pooling2d_1" out_port_id="1"/>
+	</map>
+	<map>
+		<framework name="flatten_1" out_port_id="flatten_1"/>
+		<IR id="13" name="flatten_1" out_port_id="1"/>
+	</map>
+	<map>
+		<framework name="dense_3_activation" out_port_id="0"/>
+		<IR id="19" name="dense_3_activation" out_port_id="1"/>
+	</map>
+	<map>
+		<framework name="input_1" out_port_id="input_1"/>
+		<IR id="0" name="input_1" out_port_id="0"/>
+	</map>
+</mapping>

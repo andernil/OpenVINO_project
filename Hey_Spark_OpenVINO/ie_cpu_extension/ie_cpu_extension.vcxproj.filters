@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_argmax.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_base.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_ctc_greedy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_depth_to_space.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_detectionoutput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_detectionoutput_onnx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_expand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_fill.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_gather.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_grn.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_interp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_list.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_mvn.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_normalize.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_pad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_powerfile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_priorbox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_priorbox_clustered.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_priorgridgenerator_onnx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_proposal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_proposal_onnx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_psroi.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_range.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_region_yolo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_reorg_yolo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_resample.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_reverse_sequence.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_roifeatureextractor_onnx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_shuffle_channels.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_simplernms.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_space_to_depth.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_squeeze.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_strided_slice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_topkrois_onnx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_unsqueeze.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\simple_copy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_base.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\ext_list.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{D0ACAA0F-C0C8-3DC3-86B4-1B037AC9F354}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{CFF7354B-ADAD-3833-AB18-38566AD0CA0B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

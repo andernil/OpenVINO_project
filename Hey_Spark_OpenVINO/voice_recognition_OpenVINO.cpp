@@ -11,16 +11,20 @@
 
 using namespace InferenceEngine;
 
-#define INPUT_W     40
-#define INPUT_H     90
+#define INPUT_W     80//40
+#define INPUT_H     118//90
 #define INPUT_SIZE  INPUT_W*INPUT_H
+
+#define NUM_LABELS 12
+std::string labels[NUM_LABELS] = { "yes", "no", "up", "down", "left", "right", "on", "off", "stop", "go", "silence", "unknown" };
 
 // Global buffer array for the input audio
 float input_audio[INPUT_SIZE];
 
 // Path of the recorded input audio file and sample
 const char* input_processed_recording_name = "recordings/voice_rec_live_processed";
-const char* input_processed_sample_name = "recordings/data.csv";
+//const char* input_processed_sample_name = "recordings/data.csv";
+const char* input_processed_sample_name = "recordings/on.dat";
 
 // Function prototypes
 void load_sample(float* input_buffer);
@@ -38,7 +42,8 @@ int main(int argc, char *argv[]) {
 	}
 	std::string NETWORK = std::string(argv[1]);
 	std::string WEIGHTS = std::string(argv[2]);
-	const int NUM_LOOPS = std::stoi(argv[3]);
+	//const int NUM_LOOPS = std::stoi(argv[3]);
+	const int NUM_LOOPS = 1;
 	if(std::string(argv[4]) == "SAMPLE")
 		USE_SAMPLE = 1;	
 	if(std::string(argv[5]) == "FPGA")
@@ -187,10 +192,18 @@ int main(int argc, char *argv[]) {
 		// Print output data and execution time
 		auto output_data = output->buffer().as<PrecisionTrait<Precision::FP32>::value_type*>();
 		std::cout << "Neural Network output" << std::endl;
+		int high_pos = 0;
+		float temp_val = 0;
 		for(int i = 0; i < outputDims[0] * outputDims[1]; i++)
 		{
-		  std::cout << output_data[i] << std::endl;
+		  //std::cout << output_data[i] << std::endl;
+			if (output_data[i] > temp_val)
+			{
+				temp_val = output_data[i];
+				high_pos = i;
+			}
 		}
+		std::cout << "Predicted word: " << labels[high_pos] << std::endl;
 
 		std::cout << "Execution time from IE:     " << std::setprecision(4) << double(execution_time_buffer[loop])/1000 << "ms" << std::endl;
 		std::cout << "---------------------------------------" << std::endl;
@@ -234,7 +247,7 @@ void load_sample(float* input_buffer){
     std::stringstream ss(line);
     std::string data;
     std::string::size_type string_size;
-    while(getline(ss, data, ','))
+    while(getline(ss, data, '\n'))
     {
       input_buffer[i] = std::stof(data, &string_size);
       i++;
@@ -282,7 +295,10 @@ void record_input(float* input_buffer)
   free(recorded_samples);
 }
 double getCurrentTimestamp(){
+	return(1000);
+	/*
 	timespec a;
 	clock_gettime(CLOCK_MONOTONIC, &a);
 	return(1000*((double(a.tv_nsec) * 1.0e-9) + double(a.tv_sec)));
+	*/
 }

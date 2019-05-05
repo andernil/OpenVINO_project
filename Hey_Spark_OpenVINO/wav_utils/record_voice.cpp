@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctime>
-#include "portaudio.h"
+//#include "portaudio.h"
 #include "record_voice.h"
 
 void record_voice(float* recorded_samples) {
-
+	/*
   PaStreamParameters input_parameters;
   PaStream* stream;
   PaError err;
@@ -74,4 +74,6 @@ error:
   fprintf(stderr, "Error number: %d\n", err);
   fprintf(stderr, "Error message: %s\n", Pa_GetErrorText(err));
   return;
+  */
+	return;
 }
