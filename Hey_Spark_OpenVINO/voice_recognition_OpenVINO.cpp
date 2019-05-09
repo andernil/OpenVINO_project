@@ -5,8 +5,8 @@
 #include <algorithm>
 #include <iomanip>
 #include <inference_engine.hpp>
-#include "record_voice.h"
-#include "write_wav.h"
+//#include "record_voice.h"
+//#include "write_wav.h"
 #include <cstdlib>
 
 using namespace InferenceEngine;
@@ -24,7 +24,7 @@ const char* input_processed_sample_name = "recordings/data.csv";
 
 // Function prototypes
 void load_sample(float* input_buffer);
-void record_input(float* input_buffer);
+//void record_input(float* input_buffer);
 double getCurrentTimestamp();
 
 int main(int argc, char *argv[]) {
@@ -133,8 +133,8 @@ int main(int argc, char *argv[]) {
 			std::cout << "Using sampled data" << std::endl;	
 	 	  load_sample(&input_audio[0]);
 		}
-		else
-  		record_input(&input_audio[0]);
+		//else
+  		//record_input(&input_audio[0]);
 
 		std::cout << "Filling input buffer" << std::endl;
   	for(int i = 0; i < num_channels*width*height; i++)
@@ -250,7 +250,7 @@ void load_sample(float* input_buffer){
 *		Also calls and the MFCC-preprocess function and reads the data to 
 * 	input_audio via the input_buffer pointer.
 */
-
+/*
 void record_input(float* input_buffer)
 {
   // Allocate memory and record voice
@@ -281,6 +281,7 @@ void record_input(float* input_buffer)
   }
   free(recorded_samples);
 }
+*/
 double getCurrentTimestamp(){
 	timespec a;
 	clock_gettime(CLOCK_MONOTONIC, &a);

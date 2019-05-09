@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctime>
-#include "portaudio.h"
+//#include "portaudio.h"
 #include "record_voice.h"
 
 void record_voice(float* recorded_samples) {
