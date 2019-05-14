@@ -50,7 +50,7 @@ link_directories(${LIB_FOLDER})
 # Create library file from sources.
 add_executable(${TARGET_NAME} ${SRC} wav_utils/record_voice.h wav_utils/write_wav.h)
 
-set(CMAKE_CXX_FLAGS "-lportaudio -lasound -lrt -lm -pthread -std=c++11 -g ${CMAKE_CXX_FLAGS}")
+set(CMAKE_CXX_FLAGS "-lrt -lm -pthread -std=c++11 -g ${CMAKE_CXX_FLAGS}")
 
 set_target_properties(${TARGET_NAME} PROPERTIES "CMAKE_CXX_FLAGS" "${CMAKE_CXX_FLAGS} -fPIE"
 COMPILE_PDB_NAME ${TARGET_NAME})

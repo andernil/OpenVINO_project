@@ -32,6 +32,10 @@ void record_input(float* input_buffer);
 double getCurrentTimestamp();
 
 int main(int argc, char *argv[]) {
+	// Open output file for runtimes
+	std::ofstream runtimes;
+	runtimes.open("FPGA_runtimes");
+
 	// Input argument variables
 	std::string DEVICE = "CPU";
 	int DEBUG = 0;
@@ -42,12 +46,14 @@ int main(int argc, char *argv[]) {
 	}
 	std::string NETWORK = std::string(argv[1]);
 	std::string WEIGHTS = std::string(argv[2]);
-	//const int NUM_LOOPS = std::stoi(argv[3]);
-	const int NUM_LOOPS = 1;
+	const int NUM_LOOPS = std::stoi(argv[3]);
+	//const int NUM_LOOPS = 1;
 	if(std::string(argv[4]) == "SAMPLE")
 		USE_SAMPLE = 1;	
 	if(std::string(argv[5]) == "FPGA")
-		DEVICE = "HETERO:FPGA,CPU";
+		DEVICE = "FPGA";
+	else if(std::string(argv[5]) == "HETERO")
+		DEVICE = "HETERO:FPGA,CPU"; 
 	if(std::string(argv[6]) == "DEBUG")
 		DEBUG = 1;
 
@@ -210,6 +216,7 @@ int main(int argc, char *argv[]) {
 
 		// Add to running average and buffer
 		processing_avg += execution_time_buffer[loop];
+		runtimes << execution_time_buffer[loop] << "\n";
   }
 
 	// Calculate average and sort buffer
@@ -227,6 +234,7 @@ int main(int argc, char *argv[]) {
 	std::cout << "Throughput   Avg: " << 1000*1000/average << " samples/s. Median: "
 						<< 1000*1000/double(execution_time_buffer[int(NUM_LOOPS/2)]) << " samples/s. Fastest: "
 						<< 1000*1000/double(execution_time_buffer[0]) << " samples/s." << std::endl;
+	runtimes.close();
 }
 
 /////////// HELPER FUNCTIONS //////////////////////////////
