@@ -17,24 +17,31 @@ using namespace InferenceEngine;
 
 #define NUM_LABELS 12
 std::string labels[NUM_LABELS] = { "yes", "no", "up", "down", "left", "right", "on", "off", "stop", "go", "silence", "unknown" };
-
-// Global buffer array for the input audio
-float input_audio[INPUT_SIZE];
+// Global buffer array for the input audio. +1 for the first number of the input samples file which
+// is the number of filterbanks for the sample.
+float input_audio[INPUT_SIZE + 1];
 
 // Path of the recorded input audio file and sample
 const char* input_processed_recording_name = "recordings/voice_rec_live_processed";
 //const char* input_processed_sample_name = "recordings/data.csv";
 const char* input_processed_sample_name = "recordings/on.dat";
 
+std::string input_samples_subdir = "recordings/input_data/";
+std::string input_samples_text = "recordings/verification_data-201955023_CNN.txt";
+
 // Function prototypes
-void load_sample(float* input_buffer);
+void load_sample(float* input_buffer, std::string input_sample_filename);
 void record_input(float* input_buffer);
 double getCurrentTimestamp();
 
 int main(int argc, char *argv[]) {
 	// Open output file for runtimes
 	std::ofstream runtimes;
-	runtimes.open("FPGA_runtimes");
+	runtimes.open("FPGA_runtimes.txt");
+
+  // Open ouput file for predictions vs golden refs
+  std::ofstream predictions;
+  predictions.open("predictions_gold_pred.txt");
 
 	// Input argument variables
 	std::string DEVICE = "CPU";
@@ -49,7 +56,7 @@ int main(int argc, char *argv[]) {
 	const int NUM_LOOPS = std::stoi(argv[3]);
 	//const int NUM_LOOPS = 1;
 	if(std::string(argv[4]) == "SAMPLE")
-		USE_SAMPLE = 1;	
+		USE_SAMPLE = 1;
 	if(std::string(argv[5]) == "FPGA")
 		DEVICE = "FPGA";
 	else if(std::string(argv[5]) == "HETERO")
@@ -57,6 +64,10 @@ int main(int argc, char *argv[]) {
 	if(std::string(argv[6]) == "DEBUG")
 		DEBUG = 1;
 
+  // Input filename and label arrays
+  std::string input_files[NUM_LOOPS];
+  int golden_labels[NUM_LOOPS];
+  int predicted_labels[NUM_LOOPS];
 	// Timestamps
 	long long execution_time_buffer[NUM_LOOPS];
 
@@ -93,7 +104,7 @@ int main(int argc, char *argv[]) {
 	static size_t height = input_info->getTensorDesc().getDims()[2];
 	if(DEBUG){
 		std::cout << "Num. input channels: " << num_channels << std::endl;
-		std::cout << "Input dimensions: " << width << "x" << height << std::endl;
+		std::cout << "Input dimensions: " << height << "x" << width << std::endl;
   }
 
 	// Get output info and set output precision
@@ -118,6 +129,46 @@ int main(int argc, char *argv[]) {
 	if(DEBUG)	
 		std::cout << "Output dims: " << outputDims[0] << "x" << outputDims[1] << std::endl;
 
+  // Load input samples from input text file and split samples and weights into two arrays
+  std::ifstream input_samples(input_samples_text);
+  std::string input_string;
+  std::string delimiter = ",";
+  int prev_label = 0;
+  int temp_label = 0;
+  std::string temp_filename;
+  int num_labels_for_category = 0;
+  int num_samples_per_category = NUM_LOOPS / NUM_LABELS;
+  for(int i = 0; i < NUM_LOOPS; i++)
+  {
+       if(getline(input_samples, input_string))
+       {
+            temp_filename = input_string.substr(0, input_string.find(delimiter));
+            input_string.erase(0, input_string.find(delimiter) + delimiter.length());
+            temp_label = std::stoi(input_string, nullptr, 10);
+
+            if((num_labels_for_category < num_samples_per_category) || (temp_label == 11))
+            {
+                 std::cout << temp_filename << std::endl;
+                 input_files[i] = temp_filename;
+                 golden_labels[i] = temp_label;
+            }
+            else
+                 i--;
+            if(temp_label == prev_label)
+            {
+                 num_labels_for_category++;
+            }
+            else
+                 num_labels_for_category = 0;
+            prev_label = temp_label;
+       }
+       else
+       {
+
+            std::cout << "Loaded " << i << " samples from input text file" << std::endl;
+       }
+  }
+
 	// 4. Load the model
 	if(DEBUG)	
 		std::cout << "Loading model" << std::endl;
@@ -141,8 +192,8 @@ int main(int argc, char *argv[]) {
 	  if(DEBUG)	
 		  std::cout << "Preparing data" << std::endl;
 		if(USE_SAMPLE){
-			std::cout << "Using sampled data" << std::endl;	
-	 	  load_sample(&input_audio[0]);
+      std::cout << "Sample: " << input_files[loop] << std::endl;
+	 	  load_sample(&input_audio[0], input_files[loop]);
 		}
 		else
   		record_input(&input_audio[0]);
@@ -150,7 +201,7 @@ int main(int argc, char *argv[]) {
 		std::cout << "Filling input buffer" << std::endl;
   	for(int i = 0; i < num_channels*width*height; i++)
   	{
- 	    input_data[i] = input_audio[i];
+ 	    input_data[i] = input_audio[i + 1];
   	}	
 
 		// 7. Start synchronous inference
@@ -198,7 +249,7 @@ int main(int argc, char *argv[]) {
 		// Print output data and execution time
 		auto output_data = output->buffer().as<PrecisionTrait<Precision::FP32>::value_type*>();
 		std::cout << "Neural Network output" << std::endl;
-		int high_pos = 0;
+		int top_val = 0;
 		float temp_val = 0;
 		for(int i = 0; i < outputDims[0] * outputDims[1]; i++)
 		{
@@ -206,11 +257,13 @@ int main(int argc, char *argv[]) {
 			if (output_data[i] > temp_val)
 			{
 				temp_val = output_data[i];
-				high_pos = i;
+				top_val = i;
 			}
 		}
-		std::cout << "Predicted word: " << labels[high_pos] << std::endl;
-
+    predicted_labels[loop] == top_val;
+		std::cout << "Predicted word: " << labels[top_val] << std::endl;
+    std::cout << "Actual word: " << labels[golden_labels[loop]] << std::endl;
+    predictions << golden_labels[loop] << "," << top_val << ",";
 		std::cout << "Execution time from IE:     " << std::setprecision(4) << double(execution_time_buffer[loop])/1000 << "ms" << std::endl;
 		std::cout << "---------------------------------------" << std::endl;
 
@@ -235,6 +288,7 @@ int main(int argc, char *argv[]) {
 						<< 1000*1000/double(execution_time_buffer[int(NUM_LOOPS/2)]) << " samples/s. Fastest: "
 						<< 1000*1000/double(execution_time_buffer[0]) << " samples/s." << std::endl;
 	runtimes.close();
+  predictions.close();
 }
 
 /////////// HELPER FUNCTIONS //////////////////////////////
@@ -245,9 +299,10 @@ int main(int argc, char *argv[]) {
 *		input_buffer pointer
 */
 
-void load_sample(float* input_buffer){
+void load_sample(float* input_buffer, std::string input_sample_filename){
 	std::cout << "Loading array" << std::endl;
-  std::ifstream in(input_processed_sample_name);
+  input_sample_filename = input_samples_subdir + input_sample_filename;
+  std::ifstream in(input_sample_filename);
   std::string line;
   int i = 0;
   while(getline(in, line))
