@@ -1,19 +1,15 @@
 # OpenVINO_project
-NTNU Autumn 2018 semester project for Cisco.
+NTNU 2019 master thesis for Cisco, branch of semester project autumn 2018
 
-Project files for compiling and running the "Hey Spark" voice recognition neural
+Project files for compiling and running the Google Speech Commands keyword spotting neural
 network program using OpenVINO on a CPU or FPGA. 
 
-The program can either use a pre-recorded and pre-processed sample to test the network,
-or record audio using the PortAudio-framework and a MFCC-converter from Cisco 
-(included in this repository). The program infers the neural network onto a CPU or an 
-FPGA after having previously been optimized using the Model Optimizer in the OpenVINO
-toolkit. 
-
+The program reads an input file list of verification samples generated during network training,
+defined in the program to by default be recordings/verification_data-201955023_CNN.txt.
 
 The executable program takes several input arguments in the following way:
 ./voice_recognition_OpenVINO [NETWORK_PATH XML] [WEIGHTS_PATH BIN] [NUM_ITERATIONS]
-[SAMPLE or LIVE] [CPU or FPGA] [RELEASE or DEBUG].
+[SAMPLE] [CPU, FPGA or HETERO] [RELEASE or DEBUG].
 
 
 [NETWORK_PATH XML] is the path to the network.xml file (in this case Optimized/wakeword.bin)
@@ -23,13 +19,12 @@ The executable program takes several input arguments in the following way:
 
 [NUM_ITERATIONS] is the number of iterations the program will record and infer
 
-[SAMPLE or LIVE] is whether the program should use the pre-recorded sample or record new data
-using PortAudio.
+[SAMPLE or LIVE] is whether the program should use the pre-recorded sample or recordl live data.
+NOTE: Unused for this branch.
 
-[CPU or FPGA] is whether to infer to only CPU or FPGA with CPU-fallback
+[CPU, FPGA or HETERO] is whether to infer to only CPU, only FPGA or using Hetero with FPGA and CPu as fallback.
 
 [RELEASE or DEBUG] is whether to have minimal output info or debug info
-
 
 Minimal output info is:
 
